@@ -1,257 +1,518 @@
 # Northstar Retail End-to-End Data Platform
 
-A complete, evidence-oriented data engineering portfolio implementation for a fictional omnichannel retailer. The repository integrates SQL Server ERP data, PostgreSQL digital/marketing data, and CSV/JSON feeds through Python extraction, a Databricks medallion lakehouse, a dimensional SQL Server serving warehouse, and a Power BI semantic model.
+**Data Engineering Portfolio Project | Python • SQL • PySpark • Databricks • Delta Lake • SQL Server • PostgreSQL • Power BI**
 
-![Northstar Retail architecture](docs/images/overall_architecture.svg)
+Northstar Retail is an end-to-end batch data engineering project built for a fictional omnichannel retailer. The platform integrates ERP, e-commerce, marketing, inventory, shipment, promotion, and return data from multiple source systems into a governed lakehouse and dimensional data warehouse.
 
-## Implementation status
+The project demonstrates practical data engineering skills including:
 
-**Source implementation:** complete.  
-**Packaged local validation:** complete.  
-**External deployment:** requires the user’s own SQL Server, PostgreSQL, Databricks, and Power BI environments; no external success is fabricated.
-
-The included deterministic quick fixture was executed during packaging and produced:
-
-| Result | Locally verified value |
-|---|---:|
-| Source data files | 23 |
-| Gold dimensions | 9 |
-| Gold facts | 6 |
-| Required local quality checks | 70 passed, 0 failed |
-| Valid sales lines | 397 |
-| Distinct orders represented | 198 |
-| Reconciled sample net sales | $28,325.94 |
-| Source-to-Gold sales reconciliation | Passed |
-
-See [`docs/EXECUTION_STATUS.md`](docs/EXECUTION_STATUS.md) for the exact boundary between locally verified work and environment-dependent deployment.
-
-## Business problem
-
-Northstar Retail’s sales, inventory, customers, website behavior, marketing, shipments, returns, supplier costs, and promotions live in separate operational systems. The platform creates one governed daily path from source records to conformed dimensions, fact tables, quality evidence, KPI definitions, analyst SQL, and report requirements.
+* Multi-source data ingestion
+* ETL/ELT pipeline development
+* Medallion architecture
+* PySpark and Spark SQL transformations
+* Dimensional modeling
+* SCD Type 2 history
+* Incremental and idempotent processing
+* Data-quality testing
+* Source-to-target reconciliation
+* Workflow orchestration
+* CI/CD validation
+* Analytics and semantic-model design
 
 ## Architecture
 
-### Track A — local-first portfolio path
+![Northstar Retail Architecture](docs/images/overall_architecture.svg)
 
-1. Generate deterministic fictional data.
-2. Load ERP entities into local SQL Server and digital entities into local PostgreSQL.
-3. Extract timestamped Parquet/file batches with a manifest and SHA-256 checksums.
-4. Manually upload one complete batch to a Databricks Unity Catalog volume.
-5. Run the 13-task Lakeflow Job: environment, Bronze, Silver, Gold, quality, publication, and final reconciliation.
-6. Download the validated Gold export.
-7. Publish all nine dimensions and six facts transactionally into `NorthstarRetail_DW`.
-8. Import the star schema into Power BI and validate every measure against independent SQL.
+### Data flow
 
-Databricks does **not** connect to a laptop’s `localhost` in Track A. The manual cloud handoffs are explicit architecture boundaries.
+```text
+SQL Server ERP ────────────┐
+                           │
+PostgreSQL Digital Data ───┼──> Python Extraction
+                           │        │
+CSV and JSON Files ────────┘        ▼
+                              Batch Manifest
+                              Row Counts
+                              SHA-256 Checksums
+                                    │
+                                    ▼
+                          Databricks / Delta Lake
+                        Bronze → Silver → Gold
+                                    │
+                             Data-Quality Gate
+                                    │
+                                    ▼
+                         SQL Server Data Warehouse
+                                    │
+                                    ▼
+                         Power BI Semantic Model
+```
 
-### Track B — optional cloud-connected path
+The primary implementation follows a **local-first batch architecture**:
 
-The optional extension replaces local/manual boundaries with network-accessible managed databases, cloud storage, secured JDBC connectivity, secret-managed identities, and managed serving/BI services. It is not required for the core portfolio project.
+1. Python generates deterministic fictional retail data.
+2. ERP data is modeled for SQL Server.
+3. Website and marketing data are modeled for PostgreSQL.
+4. Additional business feeds arrive as CSV and JSON files.
+5. Python extracts the sources into versioned batch folders.
+6. Databricks processes the data through Bronze, Silver, and Gold layers.
+7. A required quality gate validates the data before publication.
+8. Gold tables are published to a SQL Server dimensional warehouse.
+9. Power BI uses the warehouse for reporting and KPI analysis.
 
-## Data model
+Because a cloud Databricks workspace cannot directly access a laptop’s `localhost`, the local-first path uses explicit upload and download boundaries. A cloud-connected extension is documented separately for managed databases, cloud storage, secure JDBC connectivity, and managed serving tools.
 
-![Northstar Retail Gold star schema](docs/images/gold_star_schema.svg)
+## Project Results
+
+The included deterministic sample was executed and locally validated.
+
+| Result                        |      Verified Value |
+| ----------------------------- | ------------------: |
+| Source data files             |                  23 |
+| Gold dimensions               |                   9 |
+| Gold fact tables              |                   6 |
+| Required quality checks       | 70 passed, 0 failed |
+| Automated tests               |           21 passed |
+| Valid sales rows              |                 397 |
+| Distinct orders represented   |                 198 |
+| Reconciled net sales          |          $28,325.94 |
+| Source-to-Gold reconciliation |              Passed |
+
+These values come from fictional sample data and do not represent a real company.
+
+Detailed evidence is available in:
+
+* [`datasets/demo_gold/quality_results.json`](datasets/demo_gold/quality_results.json)
+* [`datasets/demo_gold/reconciliation_results.json`](datasets/demo_gold/reconciliation_results.json)
+* [`datasets/demo_gold/gold_manifest.json`](datasets/demo_gold/gold_manifest.json)
+* [`docs/LOCAL_VALIDATION_REPORT.md`](docs/LOCAL_VALIDATION_REPORT.md)
+* [`run_artifacts/validation_report.txt`](run_artifacts/validation_report.txt)
+
+## Business Problem
+
+Northstar Retail’s information is distributed across separate operational systems:
+
+* Sales, customers, products, employees, stores, inventory, payments, and shipments are stored in SQL Server.
+* Website sessions, web events, marketing campaigns, and marketing spend are stored in PostgreSQL.
+* Returns, supplier-cost changes, promotions, and shipment-tracking events arrive as CSV or JSON files.
+
+This separation creates inconsistent reporting and makes it difficult for business teams to agree on trusted numbers.
+
+The platform creates one governed path for answering questions such as:
+
+* How much revenue and gross profit is the company generating?
+* Which products, categories, stores, regions, and channels perform best?
+* What is the average order value?
+* What is the product return rate?
+* What percentage of shipments arrive on time?
+* Which products are at risk of stocking out?
+* How well does website activity convert into orders?
+* How effective is marketing spend by campaign and channel?
+* How do new and returning customers compare?
+
+## Technology Stack
+
+| Category        | Technologies                                                     |
+| --------------- | ---------------------------------------------------------------- |
+| Programming     | Python, SQL, PowerShell                                          |
+| Data Processing | Pandas, PySpark, Spark SQL                                       |
+| Source Systems  | SQL Server, PostgreSQL, CSV, JSON, JSONL                         |
+| Lakehouse       | Databricks, Delta Lake, Unity Catalog design                     |
+| Data Warehouse  | SQL Server dimensional warehouse                                 |
+| Modeling        | Star schema, surrogate keys, SCD Type 1 and Type 2               |
+| Orchestration   | Databricks Workflows / Lakeflow Jobs                             |
+| Analytics       | Power BI, DAX, SQL semantic views                                |
+| Testing         | pytest, data-quality checks, reconciliation tests                |
+| CI/CD           | Git, GitHub, GitHub Actions                                      |
+| Integration     | SQLAlchemy, pyodbc, psycopg                                      |
+| Security        | Environment variables, secret scanning, least-privilege guidance |
+
+## Medallion Architecture
+
+### Bronze Layer
+
+The Bronze layer preserves the original batch with technical metadata.
+
+Responsibilities include:
+
+* Reading SQL Server, PostgreSQL, CSV, and JSON extracts
+* Preserving source values
+* Recording batch identifiers
+* Recording ingestion timestamps
+* Capturing source filenames
+* Supporting repeatable batch processing
+* Preventing accidental duplicate ingestion
+
+### Silver Layer
+
+The Silver layer cleans, standardizes, and validates the source data.
+
+Responsibilities include:
+
+* Schema enforcement
+* Type conversion
+* Timestamp normalization
+* Deduplication
+* Required-field validation
+* Business-rule validation
+* Referential-integrity checks
+* Invalid-record quarantine
+* Accepted-value validation
+* Sales arithmetic validation
+
+### Gold Layer
+
+The Gold layer creates business-ready dimensions, facts, and KPI outputs.
+
+Responsibilities include:
+
+* Conformed dimensions
+* Surrogate-key generation
+* SCD Type 2 customer and product history
+* Unknown-member handling
+* Point-in-time dimension resolution
+* Fact-table grain enforcement
+* Incremental MERGE behavior
+* Source-to-Gold reconciliation
+* Business-facing KPI views
+
+## Dimensional Data Model
+
+![Northstar Retail Gold Star Schema](docs/images/gold_star_schema.svg)
 
 ### Dimensions
 
-`dim_date`, `dim_customer`, `dim_product`, `dim_store`, `dim_employee`, `dim_supplier`, `dim_promotion`, `dim_channel`, and `dim_campaign`.
+The Gold model contains nine dimensions:
 
-Customer and product use SCD Type 2 history. Every dimension includes a key-0 Unknown member. Store, employee, supplier, promotion, channel, and campaign use SQL Server `INT`-compatible keys; customer/product and fact row keys use deterministic `BIGINT`-compatible keys.
+* `dim_date`
+* `dim_customer`
+* `dim_product`
+* `dim_store`
+* `dim_employee`
+* `dim_supplier`
+* `dim_promotion`
+* `dim_channel`
+* `dim_campaign`
 
-### Facts
+Customer and product dimensions include **SCD Type 2 history** so historical facts remain connected to the correct version of each record.
 
-| Fact | Declared grain |
-|---|---|
-| `fact_sales` | One valid order item |
-| `fact_returns` | One accepted return record |
+Every dimension includes a key-`0` Unknown member so incomplete business events remain visible instead of being silently dropped.
+
+### Fact Tables
+
+| Fact Table                | Declared Grain                        |
+| ------------------------- | ------------------------------------- |
+| `fact_sales`              | One valid order item                  |
+| `fact_returns`            | One accepted return record            |
 | `fact_inventory_snapshot` | One snapshot date, store, and product |
-| `fact_shipments` | One shipment |
-| `fact_web_sessions` | One web session |
-| `fact_marketing_spend` | One spend date, campaign, and channel |
+| `fact_shipments`          | One shipment                          |
+| `fact_web_sessions`       | One web session                       |
+| `fact_marketing_spend`    | One spend date, campaign, and channel |
 
-The full column-level dictionary is in [`docs/data_dictionary.md`](docs/data_dictionary.md), and table-level lineage is in [`docs/source_to_target_mapping.md`](docs/source_to_target_mapping.md).
+Column definitions are available in the [`data dictionary`](docs/data_dictionary.md), and source mappings are documented in the [`source-to-target mapping`](docs/source_to_target_mapping.md).
 
-## Repository contents
+## Data Quality and Reliability
+
+The project includes automated checks for:
+
+* Required files and columns
+* Data types
+* Missing identifiers
+* Duplicate business keys
+* Duplicate fact grains
+* Referential integrity
+* Accepted status values
+* Positive quantities
+* Nonnegative prices and costs
+* Valid date ranges
+* Sales arithmetic
+* SCD Type 2 overlap
+* Current-record uniqueness
+* Unknown-member coverage
+* Source-to-Bronze reconciliation
+* Bronze-to-Silver reconciliation
+* Silver-to-Gold reconciliation
+* Exact source-to-Gold net-sales reconciliation
+
+A required quality failure blocks the publication stage.
+
+### Idempotency
+
+The project is designed so repeated processing does not create duplicate business records:
+
+* Bronze replaces data for the same batch before appending.
+* Silver replaces data for the same batch.
+* Gold facts use deterministic keys and MERGE logic.
+* Type 1 dimensions merge by natural key.
+* Customer and product SCD Type 2 records expire and insert versions when tracked values change.
+* SQL Server publication uses transactional loading.
+* Incremental warehouse publication merges by deterministic surrogate key.
+
+## Workflow Orchestration
+
+The repository includes a 13-task Databricks/Lakeflow workflow:
+
+1. Environment validation
+2. SQL Server Bronze ingestion
+3. PostgreSQL Bronze ingestion
+4. File-feed Bronze ingestion
+5. Customer Silver processing
+6. Product Silver processing
+7. Sales Silver processing
+8. Digital-data Silver processing
+9. Gold dimension creation
+10. Gold fact creation
+11. Data-quality gate
+12. Gold publication
+13. Final reconciliation and demonstration queries
+
+![Databricks Workflow Dependencies](docs/images/jobs_dependency.svg)
+
+The workflow definition includes:
+
+* Task dependencies
+* Runtime parameters
+* Batch identifiers
+* Full and incremental load modes
+* Retry behavior
+* Logging
+* Required validation gates
+* Publication controls
+
+## Power BI and Analytics
+
+The project includes:
+
+* A Power BI semantic-model specification
+* Star-schema relationship definitions
+* DAX measures
+* Dashboard-page requirements
+* SQL validation queries
+* KPI definitions
+* Twenty analyst-ready SQL questions
+
+Example measures include:
+
+* Total Revenue
+* Gross Profit
+* Gross Margin Percentage
+* Orders
+* Units Sold
+* Average Order Value
+* Returned Units
+* Return Rate
+* On-Time Delivery Percentage
+* Marketing Spend
+* Web Sessions
+* Conversion Rate
+* Attributed Revenue
+* Return on Ad Spend
+* Inventory On Hand
+* Stockout Risk Count
+
+Power BI measures are stored in [`powerbi/measures.dax`](powerbi/measures.dax).
+
+Independent SQL validation is stored in [`sql/sqlserver/analytics/kpi_validation_queries.sql`](sql/sqlserver/analytics/kpi_validation_queries.sql).
+
+## Repository Structure
 
 ```text
 SQL-Data-Warehouse-Project/
-├── .github/workflows/             # CI validation workflow
-├── config/                        # Non-secret generation/runtime examples
+├── .github/
+│   └── workflows/                  # GitHub Actions validation
+├── config/                         # Runtime and generation configuration
 ├── databricks/
-│   ├── notebooks/                 # 00–12 complete source notebooks
-│   └── jobs/                      # 13-task Lakeflow Job definition
+│   ├── notebooks/                  # Bronze, Silver, Gold, quality, and demo tasks
+│   └── jobs/                       # 13-task workflow definition
 ├── datasets/
-│   ├── sample/                    # Deterministic source fixture
-│   └── demo_gold/                 # Locally validated 9-dimension/6-fact exports
+│   ├── sample/                     # Deterministic fictional source data
+│   └── demo_gold/                  # Locally validated Gold outputs
 ├── docs/
-│   ├── images/                    # DOT, Mermaid, and rendered SVG diagrams
-│   ├── manual/                    # Complete Markdown/PDF build manuals
-│   ├── data_dictionary.*
-│   ├── source_to_target_mapping.*
-│   ├── kpi_definitions.*
-│   └── execution, architecture, runbook, security, and portfolio docs
-├── notebooks/                     # Executed local validation showcase + HTML
-├── powerbi/                       # Semantic model, DAX, and report requirements
+│   ├── images/                     # Architecture, lineage, ERD, and schema diagrams
+│   ├── manual/                     # Complete project build manuals
+│   ├── architecture.md
+│   ├── data_dictionary.md
+│   ├── source_to_target_mapping.md
+│   ├── kpi_definitions.md
+│   └── runbook.md
+├── notebooks/                      # Executed local validation notebook
+├── powerbi/                        # Semantic model, DAX, and dashboard requirements
 ├── scripts/
-│   ├── data_generation/           # Deterministic synthetic data
-│   ├── loading/                   # SQL Server/PostgreSQL/Gold loaders
-│   ├── extraction/                # Full/incremental local extraction
-│   ├── local_demo/                # pandas parity build for all Gold objects
-│   ├── documentation/             # Reproducible metadata docs
-│   └── validation/                # Static, secret, notebook, and link checks
+│   ├── data_generation/            # Synthetic-data generation
+│   ├── extraction/                 # Full and incremental batch extraction
+│   ├── loading/                    # SQL Server and PostgreSQL loaders
+│   ├── local_demo/                 # Locally executable Gold parity pipeline
+│   ├── documentation/              # Metadata-document generation
+│   └── validation/                 # Quality and repository validation
 ├── sql/
-│   ├── sqlserver/                 # ERP, warehouse, semantic, validation, analytics
-│   ├── postgres/                  # Digital source and validation
-│   └── databricks/                # Delta/Spark SQL patterns and KPI views
-├── tests/                         # Unit, integration, DQ, and reconciliation tests
+│   ├── databricks/                 # Spark SQL and Delta patterns
+│   ├── postgres/                   # PostgreSQL DDL and validation
+│   └── sqlserver/                  # ERP, warehouse, validation, and analytics SQL
+├── tests/                          # Unit, integration, quality, and reconciliation tests
+├── .env.example
 ├── FILE_MANIFEST.md
-└── PROJECT_COMPLETENESS_CHECKLIST.md
+├── PROJECT_COMPLETENESS_CHECKLIST.md
+├── requirements.txt
+└── README.md
 ```
 
-## Fastest locally executable demonstration
+## Quick Start
 
-The local parity path requires Python only. It validates the model and business arithmetic without pretending to run Databricks.
+The fastest demonstration requires **Python 3.13** and does not require database or cloud credentials.
 
 ### Windows PowerShell
 
 ```powershell
+git clone https://github.com/Losboules/SQL-Data-Warehouse-Project.git
+cd SQL-Data-Warehouse-Project
+
 py -3.13 -m venv .venv
+
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\.venv\Scripts\Activate.ps1
+
 python -m pip install --upgrade pip
 python -m pip install -r requirements-dev.txt
-python -m scripts.data_generation.generate_northstar_data --scale quick --seed 20260815 --output-dir datasets\sample
-python -m scripts.local_demo.build_local_gold --input-dir datasets\sample --output-dir datasets\demo_gold
+
+python -m scripts.data_generation.generate_northstar_data `
+    --scale quick `
+    --seed 20260815 `
+    --output-dir datasets\sample
+
+python -m scripts.local_demo.build_local_gold `
+    --input-dir datasets\sample `
+    --output-dir datasets\demo_gold
+
 python -m pytest -q
 ```
 
-### Platform-neutral shell
+### macOS or Linux
 
 ```bash
-python -m venv .venv
+git clone https://github.com/Losboules/SQL-Data-Warehouse-Project.git
+cd SQL-Data-Warehouse-Project
+
+python3.13 -m venv .venv
 source .venv/bin/activate
+
 python -m pip install --upgrade pip
 python -m pip install -r requirements-dev.txt
-python -m scripts.data_generation.generate_northstar_data --scale quick --seed 20260815 --output-dir datasets/sample
-python -m scripts.local_demo.build_local_gold --input-dir datasets/sample --output-dir datasets/demo_gold
+
+python -m scripts.data_generation.generate_northstar_data \
+    --scale quick \
+    --seed 20260815 \
+    --output-dir datasets/sample
+
+python -m scripts.local_demo.build_local_gold \
+    --input-dir datasets/sample \
+    --output-dir datasets/demo_gold
+
 python -m pytest -q
 ```
 
-Inspect:
+After the commands finish, inspect:
 
-- `datasets/sample/metadata/batch_manifest.json`
-- `datasets/demo_gold/gold_manifest.json`
-- `datasets/demo_gold/quality_results.json`
-- `datasets/demo_gold/reconciliation_results.json`
-- `notebooks/Northstar_Retail_Local_Validation_Demo.html`
+* [`datasets/sample/metadata/batch_manifest.json`](datasets/sample/metadata/batch_manifest.json)
+* [`datasets/demo_gold/gold_manifest.json`](datasets/demo_gold/gold_manifest.json)
+* [`datasets/demo_gold/quality_results.json`](datasets/demo_gold/quality_results.json)
+* [`datasets/demo_gold/reconciliation_results.json`](datasets/demo_gold/reconciliation_results.json)
+* [`notebooks/Northstar_Retail_Local_Validation_Demo.html`](notebooks/Northstar_Retail_Local_Validation_Demo.html)
 
-## Full Track A execution order
+## Full Platform Execution
 
-### 1. Configure local secrets
+The complete environment-based implementation follows this order:
 
-Copy `.env.example` to `.env`, replace only local connection values, and never commit `.env`.
+1. Copy `.env.example` to `.env` and enter local connection values.
+2. Create the SQL Server ERP database and tables.
+3. Create the PostgreSQL digital and marketing database.
+4. Load and validate the deterministic source data.
+5. Extract a full or incremental batch.
+6. Upload the complete batch to a Databricks Unity Catalog volume.
+7. Run the 13-task Databricks/Lakeflow workflow.
+8. Download the validated Gold publication.
+9. Create and load the SQL Server dimensional warehouse.
+10. Connect Power BI to the warehouse.
+11. Add the provided DAX measures and report pages.
+12. Compare Power BI results with independent SQL queries.
 
-### 2. Create source databases
+Detailed instructions are available in:
 
-Run in SSMS:
+* [`docs/runbook.md`](docs/runbook.md)
+* [`docs/manual/Northstar_Retail_Complete_Manual_Build_Workbook.md`](docs/manual/Northstar_Retail_Complete_Manual_Build_Workbook.md)
 
-1. `sql/sqlserver/source/01_create_erp_database.sql`
-2. `sql/sqlserver/source/02_create_erp_tables.sql`
+## GitHub Actions
 
-Run in pgAdmin/psql:
+The GitHub Actions workflow validates:
 
-1. `sql/postgres/source/00_create_database.sql`
-2. `sql/postgres/source/01_create_digital_schema.sql`
+* Python syntax
+* Required project files
+* SQL dialect separation
+* Notebook structure
+* JSON and YAML assets
+* Markdown links
+* Secret patterns
+* Data-quality contracts
+* Source-to-target reconciliation
+* Unit and integration tests
 
-### 3. Load and validate sources
+Workflow definition:
 
-```powershell
-python -m scripts.loading.load_sqlserver_source --input-dir datasets\sample\sqlserver --mode replace-dev
-python -m scripts.loading.load_postgres_source --input-dir datasets\sample\postgres --mode replace-dev
-```
+[` .github/workflows/validate_project.yml`](.github/workflows/validate_project.yml)
 
-Then execute the two source validation SQL files under `sql/*/validation/`.
+## Implementation Status
 
-### 4. Create an extraction batch
+| Component                       | Status                                                              |
+| ------------------------------- | ------------------------------------------------------------------- |
+| Source-code implementation      | Complete                                                            |
+| Deterministic sample generation | Locally validated                                                   |
+| Local Gold parity model         | Locally validated                                                   |
+| Automated quality checks        | Locally validated                                                   |
+| Source-to-Gold reconciliation   | Locally validated                                                   |
+| SQL Server source assets        | Implemented; requires a SQL Server environment                      |
+| PostgreSQL source assets        | Implemented; requires a PostgreSQL environment                      |
+| Databricks lakehouse assets     | Implemented; requires an authorized workspace                       |
+| SQL Server warehouse assets     | Implemented; requires a SQL Server environment                      |
+| Power BI model specification    | Implemented; Power BI Desktop is required to create the report file |
 
-```powershell
-python -m scripts.extraction.extract_local_sources --output-root datasets\raw --mode full
-```
-
-Upload the entire generated batch folder, unchanged, to the configured Unity Catalog volume.
-
-### 5. Run the Databricks workflow
-
-Import `databricks/notebooks/00_environment_check.py` through `12_demo_queries.py`, configure the job represented by `databricks/jobs/job_definition.example.yml`, pass the exact extraction `batch_id`, set `load_mode` to `full` for the initial build or `incremental` for later change batches, and run it. Publication is blocked when a required quality check fails.
-
-![Lakeflow dependency graph](docs/images/jobs_dependency.svg)
-
-### 6. Create and load the serving warehouse
-
-Run in SSMS:
-
-1. `sql/sqlserver/warehouse/01_create_warehouse.sql`
-2. `sql/sqlserver/warehouse/02_create_staging_tables.sql`
-3. `sql/sqlserver/warehouse/03_semantic_views.sql`
-
-After downloading the Databricks Gold export:
-
-```powershell
-python -m scripts.loading.load_gold_to_sqlserver --input-dir <DOWNLOADED_GOLD_FOLDER> --mode full-dev
-```
-
-For repeat loads after the first verified build:
-
-```powershell
-python -m scripts.loading.load_gold_to_sqlserver --input-dir <DOWNLOADED_GOLD_FOLDER> --mode incremental
-```
-
-### 7. Build the Power BI model
-
-Follow `powerbi/semantic_model.md`, add the measures from `powerbi/measures.dax`, build the pages in `powerbi/dashboard_requirements.md`, and validate values with `sql/sqlserver/analytics/kpi_validation_queries.sql`.
-
-A `.pbix` is not fabricated in this repository because Power BI Desktop must create and validate it against the user’s actual warehouse connection.
-
-## Quality and idempotency
-
-The project validates required columns, types, business-key uniqueness, null identifiers, accepted values, positive quantities, nonnegative prices, date ranges, referential integrity, duplicate grains, layer reconciliation, sales arithmetic, unknown-member coverage, and exact-batch reruns.
-
-- Bronze replaces the same batch before append.
-- Silver replaces the same batch.
-- Gold facts MERGE deterministic surrogate keys globally, so repair runs and later batches update matching events instead of duplicating them.
-- Type 1 dimensions merge by natural key.
-- Customer/product SCD2 expires changed current rows and inserts new versions.
-- SQL Server full-development publication is transactional and FK-safe.
-- SQL Server incremental publication merges by deterministic surrogate primary key.
-
-## Security and privacy
-
-- All people, companies, identifiers, and performance values are fictional.
-- `.env` and secrets are ignored by Git.
-- The repository contains only `.env.example` placeholders.
-- CI includes a secret scan.
-- Public screenshots must hide tokens, passwords, connection strings, account email addresses, and unnecessary personal details.
-
-See [`docs/security_and_cost.md`](docs/security_and_cost.md).
-
-## Portfolio evidence
-
-The completed source package includes an executed local notebook and deterministic evidence. Before claiming external execution, add your own SQL Server query results, Databricks run ID/task outputs, warehouse audit rows, Power BI refresh evidence, and screenshots. The claim-to-evidence contract is documented in [`docs/claim_to_evidence_map.md`](docs/claim_to_evidence_map.md).
+The repository intentionally distinguishes implemented source code and locally verified results from external platform execution evidence.
 
 ## Documentation
 
-- [Complete Markdown build manual](docs/manual/Northstar_Retail_Complete_Manual_Build_Workbook.md)
-- [Complete PDF build manual](docs/manual/Northstar_Retail_Complete_Manual_Build_Workbook.pdf)
-- [Architecture](docs/architecture.md)
-- [Business requirements](docs/business_requirements.md)
-- [Data dictionary](docs/data_dictionary.md)
-- [Source-to-target mapping](docs/source_to_target_mapping.md)
-- [KPI definitions](docs/kpi_definitions.md)
-- [Runbook](docs/runbook.md)
-- [Execution status](docs/EXECUTION_STATUS.md)
-- [Official sources](docs/official_sources.md)
-- [Interview walkthrough](docs/interview_walkthrough.md)
+* [Architecture](docs/architecture.md)
+* [Business Requirements](docs/business_requirements.md)
+* [Data Dictionary](docs/data_dictionary.md)
+* [Data Lineage](docs/data_lineage.md)
+* [Source-to-Target Mapping](docs/source_to_target_mapping.md)
+* [KPI Definitions](docs/kpi_definitions.md)
+* [Runbook](docs/runbook.md)
+* [Execution Status](docs/EXECUTION_STATUS.md)
+* [Local Validation Report](docs/LOCAL_VALIDATION_REPORT.md)
+* [Security and Cost Guidance](docs/security_and_cost.md)
+* [Interview Walkthrough](docs/interview_walkthrough.md)
+* [Project Completeness Checklist](PROJECT_COMPLETENESS_CHECKLIST.md)
+
+## Key Engineering Decisions
+
+* **Batch instead of streaming:** The project focuses on reliable daily retail reporting and recoverable batch processing.
+* **Medallion architecture:** Bronze preserves source data, Silver applies quality rules, and Gold publishes business-ready models.
+* **Star schema:** The model supports understandable and efficient business analysis.
+* **SCD Type 2:** Customer and product history is preserved across changes.
+* **Unknown members:** Incomplete records remain measurable without breaking fact loads.
+* **Deterministic keys:** Repeat processing updates existing events rather than duplicating them.
+* **Blocking quality gate:** Required failures stop publication.
+* **Independent reconciliation:** Trusted metrics are verified using separate calculations and SQL queries.
+* **Local-first architecture:** Manual cloud boundaries are documented instead of implying unsupported access to local services.
+* **Synthetic data:** The project demonstrates engineering patterns without exposing real customer information.
+
+## Author
+
+**Kirolos Boules**
+
+Data Engineer | Python | SQL | ETL/ELT | Databricks
+
+* GitHub: [github.com/Losboules](https://github.com/Losboules)
+* LinkedIn: [linkedin.com/in/KirolosBoules](https://www.linkedin.com/in/KirolosBoules)
 
 ## License
 
-MIT. See [`LICENSE`](LICENSE).
+This project is licensed under the MIT License. See [`LICENSE`](LICENSE) for details.
