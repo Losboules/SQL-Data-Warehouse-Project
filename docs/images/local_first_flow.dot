@@ -1,0 +1,12 @@
+digraph G {
+  rankdir=TB; graph [label="Track A — Local-First Data Flow", labelloc=t, fontsize=20]; node [shape=box, style="rounded", fontname="Arial"];
+  a [label="1. Generate fictional source data"];
+  b [label="2. Load local SQL Server and PostgreSQL"];
+  c [label="3. Extract a timestamped batch\nwith manifest + SHA-256"];
+  d [label="4. Manually upload batch to\nDatabricks Unity Catalog volume"];
+  e [label="5. Run Bronze → Silver → Gold\n→ quality gate → export"];
+  f [label="6. Manually download validated Gold"];
+  g [label="7. Publish transactionally to\nlocal SQL Server warehouse"];
+  h [label="8. Import into Power BI\nand validate measures against SQL"];
+  a -> b -> c -> d -> e -> f -> g -> h;
+}

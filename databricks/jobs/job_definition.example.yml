@@ -1,0 +1,73 @@
+# Example version-controlled Lakeflow Job definition.
+# Paths are repository-relative and point to files the learner manually creates through this workbook.
+# Adapt this file to your workspace or convert it into a root databricks.yml bundle.
+resources:
+  jobs:
+    northstar_retail_daily:
+      name: northstar-retail-daily
+      max_concurrent_runs: 1
+      timeout_seconds: 7200
+      parameters:
+        - name: catalog
+          default: northstar_retail
+        - name: landing_schema
+          default: landing
+        - name: bronze_schema
+          default: bronze
+        - name: silver_schema
+          default: silver
+        - name: gold_schema
+          default: gold
+        - name: quality_schema
+          default: quality
+        - name: volume
+          default: track_a_files
+        - name: batch_id
+          default: MANUAL-REPLACE-ME
+        - name: load_mode
+          default: full
+      tasks:
+        - task_key: environment_check
+          notebook_task:
+            notebook_path: ../notebooks/00_environment_check.py
+            base_parameters: {catalog: "{{job.parameters.catalog}}", landing_schema: "{{job.parameters.landing_schema}}", bronze_schema: "{{job.parameters.bronze_schema}}", silver_schema: "{{job.parameters.silver_schema}}", gold_schema: "{{job.parameters.gold_schema}}", quality_schema: "{{job.parameters.quality_schema}}", volume: "{{job.parameters.volume}}", batch_id: "{{job.parameters.batch_id}}"}
+        - task_key: bronze_sqlserver
+          depends_on: [{task_key: environment_check}]
+          notebook_task: {notebook_path: ../notebooks/01_bronze_sqlserver.py, base_parameters: {catalog: "{{job.parameters.catalog}}", landing_schema: "{{job.parameters.landing_schema}}", bronze_schema: "{{job.parameters.bronze_schema}}", volume: "{{job.parameters.volume}}", batch_id: "{{job.parameters.batch_id}}"}}
+          max_retries: 2
+          min_retry_interval_millis: 60000
+        - task_key: bronze_postgres
+          depends_on: [{task_key: environment_check}]
+          notebook_task: {notebook_path: ../notebooks/02_bronze_postgres.py, base_parameters: {catalog: "{{job.parameters.catalog}}", landing_schema: "{{job.parameters.landing_schema}}", bronze_schema: "{{job.parameters.bronze_schema}}", volume: "{{job.parameters.volume}}", batch_id: "{{job.parameters.batch_id}}"}}
+          max_retries: 2
+        - task_key: bronze_files
+          depends_on: [{task_key: environment_check}]
+          notebook_task: {notebook_path: ../notebooks/03_bronze_files.py, base_parameters: {catalog: "{{job.parameters.catalog}}", landing_schema: "{{job.parameters.landing_schema}}", bronze_schema: "{{job.parameters.bronze_schema}}", volume: "{{job.parameters.volume}}", batch_id: "{{job.parameters.batch_id}}"}}
+          max_retries: 2
+        - task_key: silver_customers
+          depends_on: [{task_key: bronze_sqlserver}, {task_key: bronze_files}]
+          notebook_task: {notebook_path: ../notebooks/04_silver_customers.py, base_parameters: {catalog: "{{job.parameters.catalog}}", bronze_schema: "{{job.parameters.bronze_schema}}", silver_schema: "{{job.parameters.silver_schema}}", quality_schema: "{{job.parameters.quality_schema}}", batch_id: "{{job.parameters.batch_id}}"}}
+        - task_key: silver_products
+          depends_on: [{task_key: bronze_sqlserver}, {task_key: bronze_files}]
+          notebook_task: {notebook_path: ../notebooks/05_silver_products.py, base_parameters: {catalog: "{{job.parameters.catalog}}", bronze_schema: "{{job.parameters.bronze_schema}}", silver_schema: "{{job.parameters.silver_schema}}", quality_schema: "{{job.parameters.quality_schema}}", batch_id: "{{job.parameters.batch_id}}"}}
+        - task_key: silver_sales
+          depends_on: [{task_key: bronze_sqlserver}, {task_key: bronze_files}, {task_key: silver_products}]
+          notebook_task: {notebook_path: ../notebooks/06_silver_sales.py, base_parameters: {catalog: "{{job.parameters.catalog}}", bronze_schema: "{{job.parameters.bronze_schema}}", silver_schema: "{{job.parameters.silver_schema}}", quality_schema: "{{job.parameters.quality_schema}}", batch_id: "{{job.parameters.batch_id}}"}}
+        - task_key: silver_digital
+          depends_on: [{task_key: bronze_postgres}]
+          notebook_task: {notebook_path: ../notebooks/07_silver_digital.py, base_parameters: {catalog: "{{job.parameters.catalog}}", bronze_schema: "{{job.parameters.bronze_schema}}", silver_schema: "{{job.parameters.silver_schema}}", quality_schema: "{{job.parameters.quality_schema}}", batch_id: "{{job.parameters.batch_id}}"}}
+        - task_key: gold_dimensions
+          depends_on: [{task_key: silver_customers}, {task_key: silver_products}, {task_key: silver_sales}, {task_key: silver_digital}]
+          notebook_task: {notebook_path: ../notebooks/08_gold_dimensions.py, base_parameters: {catalog: "{{job.parameters.catalog}}", bronze_schema: "{{job.parameters.bronze_schema}}", silver_schema: "{{job.parameters.silver_schema}}", gold_schema: "{{job.parameters.gold_schema}}", batch_id: "{{job.parameters.batch_id}}"}}
+        - task_key: gold_facts
+          depends_on: [{task_key: gold_dimensions}]
+          notebook_task: {notebook_path: ../notebooks/09_gold_facts.py, base_parameters: {catalog: "{{job.parameters.catalog}}", bronze_schema: "{{job.parameters.bronze_schema}}", silver_schema: "{{job.parameters.silver_schema}}", gold_schema: "{{job.parameters.gold_schema}}", batch_id: "{{job.parameters.batch_id}}", load_mode: "{{job.parameters.load_mode}}"}}
+        - task_key: data_quality_gate
+          depends_on: [{task_key: gold_facts}]
+          notebook_task: {notebook_path: ../notebooks/10_data_quality.py, base_parameters: {catalog: "{{job.parameters.catalog}}", silver_schema: "{{job.parameters.silver_schema}}", gold_schema: "{{job.parameters.gold_schema}}", quality_schema: "{{job.parameters.quality_schema}}", batch_id: "{{job.parameters.batch_id}}", load_mode: "{{job.parameters.load_mode}}"}}
+        - task_key: publish_gold
+          depends_on: [{task_key: data_quality_gate}]
+          notebook_task: {notebook_path: ../notebooks/11_publish_gold.py, base_parameters: {catalog: "{{job.parameters.catalog}}", landing_schema: "{{job.parameters.landing_schema}}", gold_schema: "{{job.parameters.gold_schema}}", quality_schema: "{{job.parameters.quality_schema}}", volume: "{{job.parameters.volume}}", batch_id: "{{job.parameters.batch_id}}"}}
+        - task_key: final_reconciliation
+          depends_on: [{task_key: publish_gold}]
+          notebook_task: {notebook_path: ../notebooks/12_demo_queries.py, base_parameters: {catalog: "{{job.parameters.catalog}}", gold_schema: "{{job.parameters.gold_schema}}", quality_schema: "{{job.parameters.quality_schema}}", batch_id: "{{job.parameters.batch_id}}"}}

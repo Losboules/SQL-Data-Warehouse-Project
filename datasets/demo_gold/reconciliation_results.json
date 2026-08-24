@@ -1,0 +1,18 @@
+[
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "source_to_gold_valid_sales_rows",
+    "source_value": 397.0,
+    "target_value": 397.0,
+    "difference_value": 0.0,
+    "status": "PASS"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "source_to_gold_net_sales",
+    "source_value": 28325.94,
+    "target_value": 28325.94,
+    "difference_value": -0.0,
+    "status": "PASS"
+  }
+]

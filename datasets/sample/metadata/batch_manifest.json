@@ -1,0 +1,146 @@
+{
+  "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+  "generated_at_utc": "2026-08-15T12:00:00+00:00",
+  "seed": 20260815,
+  "scale": "quick",
+  "files": [
+    {
+      "source_system": "sqlserver",
+      "file": "sqlserver/product_categories.csv",
+      "rows": 8,
+      "sha256": "bbefba70ab0051f9b8dcfa1c6b3f0f876ec4da57b5017aa2282f8113cac17c46"
+    },
+    {
+      "source_system": "sqlserver",
+      "file": "sqlserver/suppliers.csv",
+      "rows": 8,
+      "sha256": "c58ffb3b52a23bae2a085b189d9cb31ce9fe5995279b6e7c9a5f6a76e00ca38e"
+    },
+    {
+      "source_system": "sqlserver",
+      "file": "sqlserver/products.csv",
+      "rows": 30,
+      "sha256": "c376d91df4e1c7db319a9ce8c0adbd21ab06abf225eebdca1d3e10b42cd42345"
+    },
+    {
+      "source_system": "sqlserver",
+      "file": "sqlserver/stores.csv",
+      "rows": 5,
+      "sha256": "0149522a79b6165d9d0b322e21f9642217b47656750fa02b2c1c451b797dc823"
+    },
+    {
+      "source_system": "sqlserver",
+      "file": "sqlserver/employees.csv",
+      "rows": 20,
+      "sha256": "2d3827b7e4c1bd17e332b257dc2d997d96cab3a2a8d8fc74cfc9442dfb41eeed"
+    },
+    {
+      "source_system": "sqlserver",
+      "file": "sqlserver/customers.csv",
+      "rows": 60,
+      "sha256": "e2eaff3422366954d8ecaa68183a816e775f2da21c40a39507415453ad15638a"
+    },
+    {
+      "source_system": "sqlserver",
+      "file": "sqlserver/addresses.csv",
+      "rows": 60,
+      "sha256": "8ee53eb3946801bd0f73c82ce88b4ebe4bb7cc32331803709498aa54c33c86f4"
+    },
+    {
+      "source_system": "sqlserver",
+      "file": "sqlserver/orders.csv",
+      "rows": 200,
+      "sha256": "f373a6bae9a9f97bf04f4904eea7bf8bcdd346ec50ed84df76a5f6d2f17e58c2"
+    },
+    {
+      "source_system": "sqlserver",
+      "file": "sqlserver/order_items.csv",
+      "rows": 399,
+      "sha256": "cf41034c8c4b6fb14216c6443f2a95f965a13c97e2dd8de305c056645292b756"
+    },
+    {
+      "source_system": "sqlserver",
+      "file": "sqlserver/payments.csv",
+      "rows": 200,
+      "sha256": "9fcd8da198f8e0c06c64b18992af81c27b61609f0ed6cb8fd2709ba0b2ef4b93"
+    },
+    {
+      "source_system": "sqlserver",
+      "file": "sqlserver/shipments.csv",
+      "rows": 109,
+      "sha256": "bb7165989456602ec17c53c5de4942607161e549e915b890f7e635435ec0833f"
+    },
+    {
+      "source_system": "sqlserver",
+      "file": "sqlserver/inventory_transactions.csv",
+      "rows": 179,
+      "sha256": "0a77f9fbd4f6acc036232f254801732dd06dd6dc113cdb596053eb0df72a1a1e"
+    },
+    {
+      "source_system": "sqlserver",
+      "file": "sqlserver/inventory_snapshots.csv",
+      "rows": 50,
+      "sha256": "248f420b338c410fe9c446ae8720882742e059a0b87c13e5b69c0746d99d9c13"
+    },
+    {
+      "source_system": "postgres",
+      "file": "postgres/web_users.csv",
+      "rows": 80,
+      "sha256": "83eaefa388f821b06d5ab8b0f0879524095c41a95f295f6a3b35587b852ef1b6"
+    },
+    {
+      "source_system": "postgres",
+      "file": "postgres/web_sessions.csv",
+      "rows": 300,
+      "sha256": "0bca916d6d860a87cecc120c12d5caeff3a7a4d790022a8f1efb9015e0dae691"
+    },
+    {
+      "source_system": "postgres",
+      "file": "postgres/web_events.csv",
+      "rows": 755,
+      "sha256": "f959ece2ee5e1d7109d76fc8d0ee383d4a54c5ef257444a9dffee41e469d20ec"
+    },
+    {
+      "source_system": "postgres",
+      "file": "postgres/campaigns.csv",
+      "rows": 8,
+      "sha256": "51f90fd3c032cb02f6048831c3b5ba2b3ca824f623138a9a9906a5d53b5af51c"
+    },
+    {
+      "source_system": "postgres",
+      "file": "postgres/campaign_touchpoints.csv",
+      "rows": 142,
+      "sha256": "7d1ba8e02a26aa014d002535359c9a1dd3b70f10b3d1c2390a991044f6f39ec5"
+    },
+    {
+      "source_system": "postgres",
+      "file": "postgres/marketing_spend.csv",
+      "rows": 398,
+      "sha256": "ea71b597f72685f3303c52e12b15a7cc916f732e2c07d922b4f94983e5f8e82c"
+    },
+    {
+      "source_system": "files",
+      "file": "files/returns.csv",
+      "rows": 33,
+      "sha256": "224d4d1949b87ecc90c5f84c06f4ad0868a30cb6eae09d1ee5a2e0605cce18fe"
+    },
+    {
+      "source_system": "files",
+      "file": "files/supplier_cost_updates.csv",
+      "rows": 30,
+      "sha256": "7c50709adc8525a851b1bece967c1669c53754917cd359e3dc423270f3feec24"
+    },
+    {
+      "source_system": "files",
+      "file": "files/promotion_calendar.csv",
+      "rows": 3,
+      "sha256": "822f6bb2c2148c7fcf1f6cccad38ab489b6ae6fa8089cee41951e9948d84f4f0"
+    },
+    {
+      "source_system": "files",
+      "file": "files/shipment_tracking_events.jsonl",
+      "rows": 109,
+      "sha256": "a9437bfcb1205d67489294d539619c50c026505cad3e7c4d21a57cc178e5cb68"
+    }
+  ]
+}

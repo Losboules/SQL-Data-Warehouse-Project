@@ -1,0 +1,13 @@
+erDiagram
+  CUSTOMERS ||--o{ ADDRESSES : has
+  CUSTOMERS ||--o{ ORDERS : places
+  STORES ||--o{ ORDERS : fulfills
+  EMPLOYEES ||--o{ ORDERS : assists
+  ORDERS ||--|{ ORDER_ITEMS : contains
+  PRODUCTS ||--o{ ORDER_ITEMS : sold_as
+  CATEGORIES ||--o{ PRODUCTS : classifies
+  SUPPLIERS ||--o{ PRODUCTS : supplies
+  ORDERS ||--o{ PAYMENTS : paid_by
+  ORDERS ||--o{ SHIPMENTS : shipped_as
+  STORES ||--o{ INVENTORY_SNAPSHOTS : holds
+  PRODUCTS ||--o{ INVENTORY_SNAPSHOTS : measured_for

@@ -1,0 +1,322 @@
+{
+  "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+  "load_timestamp_utc": "2026-08-15T12:00:00+00:00",
+  "input_dir": "datasets/sample",
+  "output_dir": "datasets/demo_gold",
+  "tables": [
+    {
+      "table_name": "dim_date",
+      "file": "dim_date.csv",
+      "rows": 3654,
+      "columns": [
+        "date_key",
+        "full_date",
+        "day_number",
+        "day_name",
+        "week_number",
+        "month_number",
+        "month_name",
+        "quarter_number",
+        "calendar_year",
+        "is_weekend",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "5667b82bf8c06f4c2c7335b56c0916a6b601c20bbff513c9b284ba4a9deb35fe"
+    },
+    {
+      "table_name": "dim_customer",
+      "file": "dim_customer.csv",
+      "rows": 58,
+      "columns": [
+        "customer_key",
+        "customer_number",
+        "first_name",
+        "last_name",
+        "email",
+        "state_code",
+        "loyalty_tier",
+        "signup_date",
+        "effective_start_date",
+        "effective_end_date",
+        "is_current",
+        "record_hash",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "4d8cd027f8863a0aa43692e73c2ba55c7805091c68c3343dfda9a728c6b94e07"
+    },
+    {
+      "table_name": "dim_product",
+      "file": "dim_product.csv",
+      "rows": 31,
+      "columns": [
+        "product_key",
+        "sku",
+        "product_name",
+        "category_name",
+        "brand",
+        "supplier_code",
+        "unit_cost",
+        "list_price",
+        "effective_start_date",
+        "effective_end_date",
+        "is_current",
+        "record_hash",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "b0e3ebff8605a0a54ea3ae8ceb1672fb549298ad49fe30847df95cbfe560b8a5"
+    },
+    {
+      "table_name": "dim_store",
+      "file": "dim_store.csv",
+      "rows": 6,
+      "columns": [
+        "store_key",
+        "store_code",
+        "store_name",
+        "region",
+        "state_code",
+        "city",
+        "open_date",
+        "active_flag",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "cd90360315cb4408e2eb742c9a948980abfcf5050f3bddb59cf6eab9353b8bbf"
+    },
+    {
+      "table_name": "dim_employee",
+      "file": "dim_employee.csv",
+      "rows": 21,
+      "columns": [
+        "employee_key",
+        "employee_number",
+        "employee_name",
+        "job_title",
+        "store_code",
+        "active_flag",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "68f2758ceebc74c05a38d85d6f18246cba90db7df03747b7fbc1dfea49708774"
+    },
+    {
+      "table_name": "dim_supplier",
+      "file": "dim_supplier.csv",
+      "rows": 9,
+      "columns": [
+        "supplier_key",
+        "supplier_code",
+        "supplier_name",
+        "country_code",
+        "lead_time_days",
+        "active_flag",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "62b8c9412910f49fb175cca44edad0c27dc6c1a9feac4abea6a64e027c7810a1"
+    },
+    {
+      "table_name": "dim_promotion",
+      "file": "dim_promotion.csv",
+      "rows": 4,
+      "columns": [
+        "promotion_key",
+        "promotion_code",
+        "promotion_name",
+        "discount_type",
+        "discount_value",
+        "start_date",
+        "end_date",
+        "channel_code",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "dffe50d4008448a7c47174894148169ac62eb871b59294482800a189ce4cccbe"
+    },
+    {
+      "table_name": "dim_channel",
+      "file": "dim_channel.csv",
+      "rows": 9,
+      "columns": [
+        "channel_key",
+        "channel_code",
+        "channel_name",
+        "channel_group",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "654d21122fe8d2cc95478353ee1766e76de22c598ea686c1fdfc32d0c8573782"
+    },
+    {
+      "table_name": "dim_campaign",
+      "file": "dim_campaign.csv",
+      "rows": 9,
+      "columns": [
+        "campaign_key",
+        "campaign_code",
+        "campaign_name",
+        "channel",
+        "start_date",
+        "end_date",
+        "budget_amount",
+        "currency_code",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "7bf68ddb8a235e77bb2106d7c3ea28551fbdee7b88cc484292ae3ae774710dbd"
+    },
+    {
+      "table_name": "fact_sales",
+      "file": "fact_sales.csv",
+      "rows": 397,
+      "columns": [
+        "sales_key",
+        "order_item_id",
+        "order_id",
+        "order_number",
+        "order_date_key",
+        "customer_key",
+        "product_key",
+        "store_key",
+        "employee_key",
+        "promotion_key",
+        "channel_key",
+        "quantity",
+        "gross_sales_amount",
+        "discount_amount",
+        "net_sales_amount",
+        "tax_amount",
+        "unit_cost_amount",
+        "cost_of_goods_sold",
+        "gross_profit_amount",
+        "currency_code",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "25f2ab0f09b7153e29a86a104a413bf8e3636073b20544b6d68598b522c5e6de"
+    },
+    {
+      "table_name": "fact_returns",
+      "file": "fact_returns.csv",
+      "rows": 33,
+      "columns": [
+        "return_key",
+        "return_id",
+        "order_item_id",
+        "return_date_key",
+        "customer_key",
+        "product_key",
+        "store_key",
+        "return_quantity",
+        "refund_amount",
+        "return_reason",
+        "currency_code",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "535c9e9a357c1ea2b9873cd444abb409e9bb97ef2d4ce2d5b9902c3d46c0e9e7"
+    },
+    {
+      "table_name": "fact_inventory_snapshot",
+      "file": "fact_inventory_snapshot.csv",
+      "rows": 50,
+      "columns": [
+        "inventory_snapshot_key",
+        "snapshot_date_key",
+        "store_key",
+        "product_key",
+        "quantity_on_hand",
+        "quantity_reserved",
+        "reorder_point",
+        "stockout_risk_flag",
+        "inventory_value_amount",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "f1f7ef60429496d6e3dd3a436937f037a984be0bd5ad920eca5b03c7e6f26a9f"
+    },
+    {
+      "table_name": "fact_shipments",
+      "file": "fact_shipments.csv",
+      "rows": 109,
+      "columns": [
+        "shipment_key",
+        "shipment_id",
+        "order_id",
+        "ship_date_key",
+        "promised_date_key",
+        "delivery_date_key",
+        "customer_key",
+        "store_key",
+        "carrier",
+        "delivery_days",
+        "on_time_flag",
+        "shipping_cost",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "aac38c910f16c01c1b690bb989ebdaf48acb0812ce792e00c4cf94fe1cc1c2db"
+    },
+    {
+      "table_name": "fact_web_sessions",
+      "file": "fact_web_sessions.csv",
+      "rows": 300,
+      "columns": [
+        "web_session_key",
+        "session_id",
+        "session_date_key",
+        "customer_key",
+        "campaign_key",
+        "channel_key",
+        "session_count",
+        "duration_seconds",
+        "page_view_count",
+        "add_to_cart_count",
+        "converted_flag",
+        "converted_order_id",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "f09ab3b5ec67061e4867983cb74eb51ebe4af631b7a28cbff1a76463ae2fff45"
+    },
+    {
+      "table_name": "fact_marketing_spend",
+      "file": "fact_marketing_spend.csv",
+      "rows": 398,
+      "columns": [
+        "marketing_spend_key",
+        "spend_date_key",
+        "campaign_key",
+        "channel_key",
+        "spend_amount",
+        "impressions",
+        "clicks",
+        "currency_code",
+        "load_timestamp_utc",
+        "batch_id",
+        "source_system"
+      ],
+      "sha256": "36b4bd2d7377bfc90f3c74886b54a9c13ff56b9ba2fd9b018cb54712a4d1c9b3"
+    }
+  ],
+  "quality_status": "PASS",
+  "required_checks": 70,
+  "failed_required_checks": 0
+}

@@ -1,0 +1,57 @@
+name: Validate Northstar project
+
+on:
+  push:
+    branches: [main, "feature/**", "fix/**", "docs/**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-dev.txt
+
+      - name: Required files
+        run: python -m scripts.validation.check_required_files
+
+      - name: SQL dialect declarations
+        run: python -m scripts.validation.validate_sql_dialects
+
+      - name: Notebook validation
+        run: python -m scripts.validation.validate_notebooks
+
+      - name: Python syntax compilation
+        run: python -m compileall -q scripts tests databricks/notebooks
+
+      - name: Cross-file project contracts
+        run: python -m scripts.validation.validate_project_assets
+
+      - name: Generated fixture validation
+        run: python -m scripts.validation.validate_generated_data --input-dir datasets/sample
+
+      - name: Secret-pattern scan
+        run: python -m scripts.validation.scan_secrets
+
+      - name: Relative Markdown links
+        run: python -m scripts.validation.validate_markdown_links
+
+      - name: Lint Python
+        run: python -m ruff check scripts tests
+
+      - name: Unit, integration, quality, and reconciliation tests
+        run: python -m pytest -q

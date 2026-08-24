@@ -1,0 +1,23 @@
+environment: dev
+paths:
+  generated_data: datasets/generated/quick
+  extracts: datasets/raw
+  logs: logs
+sqlserver:
+  server_env: SQLSERVER_SERVER
+  source_database_env: SQLSERVER_SOURCE_DATABASE
+  warehouse_database_env: SQLSERVER_WAREHOUSE_DATABASE
+  driver_env: SQLSERVER_DRIVER
+  trusted_connection_env: SQLSERVER_TRUSTED_CONNECTION
+postgres:
+  host_env: POSTGRES_HOST
+  port_env: POSTGRES_PORT
+  database_env: POSTGRES_DATABASE
+  username_env: POSTGRES_USERNAME
+  password_env: POSTGRES_PASSWORD
+databricks:
+  catalog: northstar
+  bronze_schema: bronze
+  silver_schema: silver
+  gold_schema: gold
+  landing_volume: /Volumes/northstar/landing/raw

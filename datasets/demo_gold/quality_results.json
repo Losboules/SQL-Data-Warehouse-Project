@@ -1,0 +1,492 @@
+[
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_date_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=3654"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_date_unique_key",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicate_keys=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_date_unknown_member",
+    "status": "PASS",
+    "required": true,
+    "details": "key_0_present=True"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_customer_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=58"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_customer_unique_key",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicate_keys=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_customer_unknown_member",
+    "status": "PASS",
+    "required": true,
+    "details": "key_0_present=True"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_product_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=31"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_product_unique_key",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicate_keys=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_product_unknown_member",
+    "status": "PASS",
+    "required": true,
+    "details": "key_0_present=True"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_store_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=6"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_store_unique_key",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicate_keys=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_store_unknown_member",
+    "status": "PASS",
+    "required": true,
+    "details": "key_0_present=True"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_employee_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=21"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_employee_unique_key",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicate_keys=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_employee_unknown_member",
+    "status": "PASS",
+    "required": true,
+    "details": "key_0_present=True"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_supplier_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=9"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_supplier_unique_key",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicate_keys=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_supplier_unknown_member",
+    "status": "PASS",
+    "required": true,
+    "details": "key_0_present=True"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_promotion_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=4"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_promotion_unique_key",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicate_keys=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_promotion_unknown_member",
+    "status": "PASS",
+    "required": true,
+    "details": "key_0_present=True"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_channel_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=9"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_channel_unique_key",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicate_keys=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_channel_unknown_member",
+    "status": "PASS",
+    "required": true,
+    "details": "key_0_present=True"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_campaign_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=9"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_campaign_unique_key",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicate_keys=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "dim_campaign_unknown_member",
+    "status": "PASS",
+    "required": true,
+    "details": "key_0_present=True"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_sales_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=397"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_sales_unique_grain",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicates=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_returns_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=33"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_returns_unique_grain",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicates=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_inventory_snapshot_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=50"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_inventory_snapshot_unique_grain",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicates=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_shipments_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=109"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_shipments_unique_grain",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicates=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_web_sessions_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=300"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_web_sessions_unique_grain",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicates=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_marketing_spend_not_empty",
+    "status": "PASS",
+    "required": true,
+    "details": "rows=398"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_marketing_spend_unique_grain",
+    "status": "PASS",
+    "required": true,
+    "details": "duplicates=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_sales_revenue_identity",
+    "status": "PASS",
+    "required": true,
+    "details": "errors=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_sales_profit_identity",
+    "status": "PASS",
+    "required": true,
+    "details": "errors=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_sales_positive_quantity",
+    "status": "PASS",
+    "required": true,
+    "details": "nonpositive=0"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_sales_order_date_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_sales_customer_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_sales_product_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_sales_store_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_sales_employee_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_sales_promotion_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_sales_channel_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_returns_return_date_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_returns_customer_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_returns_product_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_returns_store_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_inventory_snapshot_snapshot_date_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_inventory_snapshot_store_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_inventory_snapshot_product_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_shipments_ship_date_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_shipments_promised_date_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_shipments_delivery_date_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_shipments_customer_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_shipments_store_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_web_sessions_session_date_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_web_sessions_customer_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_web_sessions_campaign_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_web_sessions_channel_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_marketing_spend_spend_date_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_marketing_spend_campaign_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "fact_marketing_spend_channel_key_referential_integrity",
+    "status": "PASS",
+    "required": true,
+    "details": "orphans=[]"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "source_to_gold_valid_sales_rows",
+    "status": "PASS",
+    "required": true,
+    "details": "source=397 target=397"
+  },
+  {
+    "batch_id": "GEN-20260815T120000Z-bcb100dcba34",
+    "check_name": "source_to_gold_net_sales",
+    "status": "PASS",
+    "required": true,
+    "details": "source=28325.94 target=28325.94"
+  }
+]

@@ -1,0 +1,6 @@
+store_id,store_code,store_name,region,state_code,city,open_date,active_flag,created_at,updated_at
+201,NY-NEW-01,Northstar New York 1,Northeast,NY,New York,2023-09-01,1,2024-01-01T00:00:00,2026-08-15T12:00:00
+202,MA-BOS-02,Northstar Boston 1,Northeast,MA,Boston,2022-02-11,1,2024-01-01T00:00:00,2026-08-15T12:00:00
+203,PA-PHI-03,Northstar Philadelphia 1,Northeast,PA,Philadelphia,2019-02-17,1,2024-01-01T00:00:00,2026-08-15T12:00:00
+204,VA-ARL-04,Northstar Arlington 1,Mid-Atlantic,VA,Arlington,2018-12-08,1,2024-01-01T00:00:00,2026-08-15T12:00:00
+205,MD-BET-05,Northstar Bethesda 1,Mid-Atlantic,MD,Bethesda,2021-12-23,1,2024-01-01T00:00:00,2026-08-15T12:00:00

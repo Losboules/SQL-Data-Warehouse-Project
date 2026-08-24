@@ -1,0 +1,398 @@
+layer,table_name,table_purpose,grain,ordinal_position,column_name,data_type,nullable_in_sample,key_role,business_definition
+SQL Server source,addresses,Operational addresses data.,One customer address,1,address_id,integer,False,Source identifier/foreign key,Address identifier.
+SQL Server source,addresses,Operational addresses data.,One customer address,2,customer_id,integer,False,Source identifier/foreign key,Customer identifier.
+SQL Server source,addresses,Operational addresses data.,One customer address,3,address_type,text or source-specific scalar,False,,Address type.
+SQL Server source,addresses,Operational addresses data.,One customer address,4,line1,text or source-specific scalar,False,,Line1.
+SQL Server source,addresses,Operational addresses data.,One customer address,5,line2,decimal/number,True,,Line2.
+SQL Server source,addresses,Operational addresses data.,One customer address,6,city,text or source-specific scalar,False,,City.
+SQL Server source,addresses,Operational addresses data.,One customer address,7,state_code,text or source-specific scalar,False,,State code.
+SQL Server source,addresses,Operational addresses data.,One customer address,8,postal_code,integer,False,,Postal code.
+SQL Server source,addresses,Operational addresses data.,One customer address,9,country_code,text or source-specific scalar,False,,Country code.
+SQL Server source,addresses,Operational addresses data.,One customer address,10,is_default,integer,False,,Is default.
+SQL Server source,addresses,Operational addresses data.,One customer address,11,created_at,text or source-specific scalar,False,,Created at.
+SQL Server source,addresses,Operational addresses data.,One customer address,12,updated_at,text or source-specific scalar,False,,Updated at.
+SQL Server source,customers,Operational customers data.,One customer source record,1,customer_id,integer,False,Source identifier/foreign key,Customer identifier.
+SQL Server source,customers,Operational customers data.,One customer source record,2,customer_number,text or source-specific scalar,False,,Customer number.
+SQL Server source,customers,Operational customers data.,One customer source record,3,first_name,text or source-specific scalar,False,,First name.
+SQL Server source,customers,Operational customers data.,One customer source record,4,last_name,text or source-specific scalar,False,,Last name.
+SQL Server source,customers,Operational customers data.,One customer source record,5,email,text or source-specific scalar,True,,Email.
+SQL Server source,customers,Operational customers data.,One customer source record,6,phone,text or source-specific scalar,False,,Phone.
+SQL Server source,customers,Operational customers data.,One customer source record,7,signup_date,text or source-specific scalar,False,,Signup date.
+SQL Server source,customers,Operational customers data.,One customer source record,8,loyalty_tier,text or source-specific scalar,False,,Loyalty tier.
+SQL Server source,customers,Operational customers data.,One customer source record,9,marketing_opt_in,integer,False,,Marketing opt in.
+SQL Server source,customers,Operational customers data.,One customer source record,10,created_at,text or source-specific scalar,False,,Created at.
+SQL Server source,customers,Operational customers data.,One customer source record,11,updated_at,text or source-specific scalar,False,,Updated at.
+SQL Server source,employees,Operational employees data.,One employee,1,employee_id,integer,False,Source identifier/foreign key,Employee identifier.
+SQL Server source,employees,Operational employees data.,One employee,2,employee_number,text or source-specific scalar,False,,Employee number.
+SQL Server source,employees,Operational employees data.,One employee,3,store_id,integer,False,Source identifier/foreign key,Store identifier.
+SQL Server source,employees,Operational employees data.,One employee,4,manager_employee_id,decimal/number,True,Source identifier/foreign key,Manager employee identifier.
+SQL Server source,employees,Operational employees data.,One employee,5,first_name,text or source-specific scalar,False,,First name.
+SQL Server source,employees,Operational employees data.,One employee,6,last_name,text or source-specific scalar,False,,Last name.
+SQL Server source,employees,Operational employees data.,One employee,7,job_title,text or source-specific scalar,False,,Job title.
+SQL Server source,employees,Operational employees data.,One employee,8,hire_date,text or source-specific scalar,False,,Hire date.
+SQL Server source,employees,Operational employees data.,One employee,9,active_flag,integer,False,,Active flag.
+SQL Server source,employees,Operational employees data.,One employee,10,created_at,text or source-specific scalar,False,,Created at.
+SQL Server source,employees,Operational employees data.,One employee,11,updated_at,text or source-specific scalar,False,,Updated at.
+SQL Server source,inventory_snapshots,Operational inventory snapshots data.,One date-store-product inventory snapshot,1,inventory_snapshot_id,integer,False,Source identifier/foreign key,Inventory snapshot identifier.
+SQL Server source,inventory_snapshots,Operational inventory snapshots data.,One date-store-product inventory snapshot,2,snapshot_date,text or source-specific scalar,False,,Snapshot date.
+SQL Server source,inventory_snapshots,Operational inventory snapshots data.,One date-store-product inventory snapshot,3,store_id,integer,False,Source identifier/foreign key,Store identifier.
+SQL Server source,inventory_snapshots,Operational inventory snapshots data.,One date-store-product inventory snapshot,4,product_id,integer,False,Source identifier/foreign key,Product identifier.
+SQL Server source,inventory_snapshots,Operational inventory snapshots data.,One date-store-product inventory snapshot,5,quantity_on_hand,integer,False,,Quantity on hand.
+SQL Server source,inventory_snapshots,Operational inventory snapshots data.,One date-store-product inventory snapshot,6,quantity_reserved,integer,False,,Quantity reserved.
+SQL Server source,inventory_snapshots,Operational inventory snapshots data.,One date-store-product inventory snapshot,7,reorder_point,integer,False,,Reorder point.
+SQL Server source,inventory_snapshots,Operational inventory snapshots data.,One date-store-product inventory snapshot,8,created_at,text or source-specific scalar,False,,Created at.
+SQL Server source,inventory_transactions,Operational inventory transactions data.,One inventory movement,1,inventory_transaction_id,integer,False,Source identifier/foreign key,Inventory transaction identifier.
+SQL Server source,inventory_transactions,Operational inventory transactions data.,One inventory movement,2,store_id,integer,False,Source identifier/foreign key,Store identifier.
+SQL Server source,inventory_transactions,Operational inventory transactions data.,One inventory movement,3,product_id,integer,False,Source identifier/foreign key,Product identifier.
+SQL Server source,inventory_transactions,Operational inventory transactions data.,One inventory movement,4,transaction_timestamp,text or source-specific scalar,False,,Transaction timestamp.
+SQL Server source,inventory_transactions,Operational inventory transactions data.,One inventory movement,5,transaction_type,text or source-specific scalar,False,,Transaction type.
+SQL Server source,inventory_transactions,Operational inventory transactions data.,One inventory movement,6,quantity_change,integer,False,,Quantity change.
+SQL Server source,inventory_transactions,Operational inventory transactions data.,One inventory movement,7,reference_type,text or source-specific scalar,False,,Reference type.
+SQL Server source,inventory_transactions,Operational inventory transactions data.,One inventory movement,8,reference_id,decimal/number,True,Source identifier/foreign key,Reference identifier.
+SQL Server source,inventory_transactions,Operational inventory transactions data.,One inventory movement,9,created_at,text or source-specific scalar,False,,Created at.
+SQL Server source,order_items,Operational order items data.,One line on one order,1,order_item_id,integer,False,Source identifier/foreign key,Order item identifier.
+SQL Server source,order_items,Operational order items data.,One line on one order,2,order_id,integer,False,Source identifier/foreign key,Order identifier.
+SQL Server source,order_items,Operational order items data.,One line on one order,3,line_number,integer,False,,Line number.
+SQL Server source,order_items,Operational order items data.,One line on one order,4,product_id,integer,False,Source identifier/foreign key,Product identifier.
+SQL Server source,order_items,Operational order items data.,One line on one order,5,quantity,integer,False,,Quantity.
+SQL Server source,order_items,Operational order items data.,One line on one order,6,unit_price,decimal/number,False,,Unit price.
+SQL Server source,order_items,Operational order items data.,One line on one order,7,unit_cost,decimal/number,False,,Unit cost.
+SQL Server source,order_items,Operational order items data.,One line on one order,8,discount_amount,decimal/number,False,,Discount amount.
+SQL Server source,order_items,Operational order items data.,One line on one order,9,tax_amount,decimal/number,False,,Tax amount.
+SQL Server source,order_items,Operational order items data.,One line on one order,10,created_at,text or source-specific scalar,False,,Created at.
+SQL Server source,order_items,Operational order items data.,One line on one order,11,updated_at,text or source-specific scalar,False,,Updated at.
+SQL Server source,orders,Operational orders data.,One customer order,1,order_id,integer,False,Source identifier/foreign key,Order identifier.
+SQL Server source,orders,Operational orders data.,One customer order,2,order_number,text or source-specific scalar,False,,Order number.
+SQL Server source,orders,Operational orders data.,One customer order,3,customer_id,integer,False,Source identifier/foreign key,Customer identifier.
+SQL Server source,orders,Operational orders data.,One customer order,4,store_id,integer,False,Source identifier/foreign key,Store identifier.
+SQL Server source,orders,Operational orders data.,One customer order,5,employee_id,decimal/number,True,Source identifier/foreign key,Employee identifier.
+SQL Server source,orders,Operational orders data.,One customer order,6,channel_code,text or source-specific scalar,False,,Channel code.
+SQL Server source,orders,Operational orders data.,One customer order,7,order_timestamp,text or source-specific scalar,False,,Order timestamp.
+SQL Server source,orders,Operational orders data.,One customer order,8,order_status,text or source-specific scalar,False,,Order status.
+SQL Server source,orders,Operational orders data.,One customer order,9,promotion_code,text or source-specific scalar,True,,Promotion code.
+SQL Server source,orders,Operational orders data.,One customer order,10,currency_code,text or source-specific scalar,False,,Currency code.
+SQL Server source,orders,Operational orders data.,One customer order,11,created_at,text or source-specific scalar,False,,Created at.
+SQL Server source,orders,Operational orders data.,One customer order,12,updated_at,text or source-specific scalar,False,,Updated at.
+SQL Server source,payments,Operational payments data.,One payment attempt/transaction,1,payment_id,integer,False,Source identifier/foreign key,Payment identifier.
+SQL Server source,payments,Operational payments data.,One payment attempt/transaction,2,order_id,integer,False,Source identifier/foreign key,Order identifier.
+SQL Server source,payments,Operational payments data.,One payment attempt/transaction,3,payment_timestamp,text or source-specific scalar,False,,Payment timestamp.
+SQL Server source,payments,Operational payments data.,One payment attempt/transaction,4,payment_method,text or source-specific scalar,False,,Payment method.
+SQL Server source,payments,Operational payments data.,One payment attempt/transaction,5,payment_status,text or source-specific scalar,False,,Payment status.
+SQL Server source,payments,Operational payments data.,One payment attempt/transaction,6,amount,decimal/number,False,,Amount.
+SQL Server source,payments,Operational payments data.,One payment attempt/transaction,7,currency_code,text or source-specific scalar,False,,Currency code.
+SQL Server source,payments,Operational payments data.,One payment attempt/transaction,8,transaction_reference,text or source-specific scalar,False,,Transaction reference.
+SQL Server source,payments,Operational payments data.,One payment attempt/transaction,9,created_at,text or source-specific scalar,False,,Created at.
+SQL Server source,payments,Operational payments data.,One payment attempt/transaction,10,updated_at,text or source-specific scalar,False,,Updated at.
+SQL Server source,product_categories,Operational product categories data.,One product category,1,category_id,integer,False,Source identifier/foreign key,Category identifier.
+SQL Server source,product_categories,Operational product categories data.,One product category,2,category_name,text or source-specific scalar,False,,Category name.
+SQL Server source,product_categories,Operational product categories data.,One product category,3,parent_category_id,decimal/number,True,Source identifier/foreign key,Parent category identifier.
+SQL Server source,product_categories,Operational product categories data.,One product category,4,created_at,text or source-specific scalar,False,,Created at.
+SQL Server source,product_categories,Operational product categories data.,One product category,5,updated_at,text or source-specific scalar,False,,Updated at.
+SQL Server source,products,Operational products data.,One product,1,product_id,integer,False,Source identifier/foreign key,Product identifier.
+SQL Server source,products,Operational products data.,One product,2,sku,text or source-specific scalar,False,,Stock keeping unit.
+SQL Server source,products,Operational products data.,One product,3,product_name,text or source-specific scalar,False,,Product name.
+SQL Server source,products,Operational products data.,One product,4,category_id,integer,False,Source identifier/foreign key,Category identifier.
+SQL Server source,products,Operational products data.,One product,5,supplier_id,integer,False,Source identifier/foreign key,Supplier identifier.
+SQL Server source,products,Operational products data.,One product,6,brand,text or source-specific scalar,False,,Brand.
+SQL Server source,products,Operational products data.,One product,7,unit_cost,decimal/number,False,,Unit cost.
+SQL Server source,products,Operational products data.,One product,8,list_price,decimal/number,False,,List price.
+SQL Server source,products,Operational products data.,One product,9,currency_code,text or source-specific scalar,False,,Currency code.
+SQL Server source,products,Operational products data.,One product,10,active_flag,integer,False,,Active flag.
+SQL Server source,products,Operational products data.,One product,11,created_at,text or source-specific scalar,False,,Created at.
+SQL Server source,products,Operational products data.,One product,12,updated_at,text or source-specific scalar,False,,Updated at.
+SQL Server source,shipments,Operational shipments data.,One shipment,1,shipment_id,integer,False,Source identifier/foreign key,Shipment identifier.
+SQL Server source,shipments,Operational shipments data.,One shipment,2,order_id,integer,False,Source identifier/foreign key,Order identifier.
+SQL Server source,shipments,Operational shipments data.,One shipment,3,carrier,text or source-specific scalar,False,,Carrier.
+SQL Server source,shipments,Operational shipments data.,One shipment,4,tracking_number,text or source-specific scalar,False,,Tracking number.
+SQL Server source,shipments,Operational shipments data.,One shipment,5,ship_date,text or source-specific scalar,False,,Ship date.
+SQL Server source,shipments,Operational shipments data.,One shipment,6,promised_delivery_date,text or source-specific scalar,False,,Promised delivery date.
+SQL Server source,shipments,Operational shipments data.,One shipment,7,actual_delivery_date,text or source-specific scalar,False,,Actual delivery date.
+SQL Server source,shipments,Operational shipments data.,One shipment,8,shipment_status,text or source-specific scalar,False,,Shipment status.
+SQL Server source,shipments,Operational shipments data.,One shipment,9,shipping_cost,decimal/number,False,,Shipping cost.
+SQL Server source,shipments,Operational shipments data.,One shipment,10,created_at,text or source-specific scalar,False,,Created at.
+SQL Server source,shipments,Operational shipments data.,One shipment,11,updated_at,text or source-specific scalar,False,,Updated at.
+SQL Server source,stores,Operational stores data.,One physical store,1,store_id,integer,False,Source identifier/foreign key,Store identifier.
+SQL Server source,stores,Operational stores data.,One physical store,2,store_code,text or source-specific scalar,False,,Store code.
+SQL Server source,stores,Operational stores data.,One physical store,3,store_name,text or source-specific scalar,False,,Store name.
+SQL Server source,stores,Operational stores data.,One physical store,4,region,text or source-specific scalar,False,,Region.
+SQL Server source,stores,Operational stores data.,One physical store,5,state_code,text or source-specific scalar,False,,State code.
+SQL Server source,stores,Operational stores data.,One physical store,6,city,text or source-specific scalar,False,,City.
+SQL Server source,stores,Operational stores data.,One physical store,7,open_date,text or source-specific scalar,False,,Open date.
+SQL Server source,stores,Operational stores data.,One physical store,8,active_flag,integer,False,,Active flag.
+SQL Server source,stores,Operational stores data.,One physical store,9,created_at,text or source-specific scalar,False,,Created at.
+SQL Server source,stores,Operational stores data.,One physical store,10,updated_at,text or source-specific scalar,False,,Updated at.
+SQL Server source,suppliers,Operational suppliers data.,One supplier,1,supplier_id,integer,False,Source identifier/foreign key,Supplier identifier.
+SQL Server source,suppliers,Operational suppliers data.,One supplier,2,supplier_code,text or source-specific scalar,False,,Supplier code.
+SQL Server source,suppliers,Operational suppliers data.,One supplier,3,supplier_name,text or source-specific scalar,False,,Supplier name.
+SQL Server source,suppliers,Operational suppliers data.,One supplier,4,country_code,text or source-specific scalar,False,,Country code.
+SQL Server source,suppliers,Operational suppliers data.,One supplier,5,lead_time_days,integer,False,,Lead time days.
+SQL Server source,suppliers,Operational suppliers data.,One supplier,6,active_flag,integer,False,,Active flag.
+SQL Server source,suppliers,Operational suppliers data.,One supplier,7,created_at,text or source-specific scalar,False,,Created at.
+SQL Server source,suppliers,Operational suppliers data.,One supplier,8,updated_at,text or source-specific scalar,False,,Updated at.
+PostgreSQL source,campaign_touchpoints,Operational campaign touchpoints data.,One user/session campaign touchpoint,1,touchpoint_id,integer,False,Source identifier/foreign key,Touchpoint identifier.
+PostgreSQL source,campaign_touchpoints,Operational campaign touchpoints data.,One user/session campaign touchpoint,2,web_user_id,integer,False,Source identifier/foreign key,Web user identifier.
+PostgreSQL source,campaign_touchpoints,Operational campaign touchpoints data.,One user/session campaign touchpoint,3,session_id,integer,False,Source identifier/foreign key,Session identifier.
+PostgreSQL source,campaign_touchpoints,Operational campaign touchpoints data.,One user/session campaign touchpoint,4,campaign_id,integer,False,Source identifier/foreign key,Campaign identifier.
+PostgreSQL source,campaign_touchpoints,Operational campaign touchpoints data.,One user/session campaign touchpoint,5,touchpoint_timestamp,text or source-specific scalar,False,,Touchpoint timestamp.
+PostgreSQL source,campaign_touchpoints,Operational campaign touchpoints data.,One user/session campaign touchpoint,6,touchpoint_type,text or source-specific scalar,False,,Touchpoint type.
+PostgreSQL source,campaign_touchpoints,Operational campaign touchpoints data.,One user/session campaign touchpoint,7,attribution_weight,decimal/number,False,,Attribution weight.
+PostgreSQL source,campaign_touchpoints,Operational campaign touchpoints data.,One user/session campaign touchpoint,8,created_at,text or source-specific scalar,False,,Created at.
+PostgreSQL source,campaigns,Operational campaigns data.,One marketing campaign,1,campaign_id,integer,False,Source identifier/foreign key,Campaign identifier.
+PostgreSQL source,campaigns,Operational campaigns data.,One marketing campaign,2,campaign_code,text or source-specific scalar,False,,Campaign code.
+PostgreSQL source,campaigns,Operational campaigns data.,One marketing campaign,3,campaign_name,text or source-specific scalar,False,,Campaign name.
+PostgreSQL source,campaigns,Operational campaigns data.,One marketing campaign,4,channel,text or source-specific scalar,False,,Channel.
+PostgreSQL source,campaigns,Operational campaigns data.,One marketing campaign,5,start_date,text or source-specific scalar,False,,Start date.
+PostgreSQL source,campaigns,Operational campaigns data.,One marketing campaign,6,end_date,text or source-specific scalar,False,,End date.
+PostgreSQL source,campaigns,Operational campaigns data.,One marketing campaign,7,budget_amount,decimal/number,False,,Budget amount.
+PostgreSQL source,campaigns,Operational campaigns data.,One marketing campaign,8,currency_code,text or source-specific scalar,False,,Currency code.
+PostgreSQL source,campaigns,Operational campaigns data.,One marketing campaign,9,created_at,text or source-specific scalar,False,,Created at.
+PostgreSQL source,campaigns,Operational campaigns data.,One marketing campaign,10,updated_at,text or source-specific scalar,False,,Updated at.
+PostgreSQL source,marketing_spend,Operational marketing spend data.,One campaign-channel-date spend row,1,spend_id,integer,False,Source identifier/foreign key,Spend identifier.
+PostgreSQL source,marketing_spend,Operational marketing spend data.,One campaign-channel-date spend row,2,spend_date,text or source-specific scalar,False,,Spend date.
+PostgreSQL source,marketing_spend,Operational marketing spend data.,One campaign-channel-date spend row,3,campaign_id,integer,False,Source identifier/foreign key,Campaign identifier.
+PostgreSQL source,marketing_spend,Operational marketing spend data.,One campaign-channel-date spend row,4,channel,text or source-specific scalar,False,,Channel.
+PostgreSQL source,marketing_spend,Operational marketing spend data.,One campaign-channel-date spend row,5,spend_amount,decimal/number,False,,Spend amount.
+PostgreSQL source,marketing_spend,Operational marketing spend data.,One campaign-channel-date spend row,6,impressions,integer,False,,Impressions.
+PostgreSQL source,marketing_spend,Operational marketing spend data.,One campaign-channel-date spend row,7,clicks,integer,False,,Clicks.
+PostgreSQL source,marketing_spend,Operational marketing spend data.,One campaign-channel-date spend row,8,currency_code,text or source-specific scalar,False,,Currency code.
+PostgreSQL source,marketing_spend,Operational marketing spend data.,One campaign-channel-date spend row,9,created_at,text or source-specific scalar,False,,Created at.
+PostgreSQL source,web_events,Operational web events data.,One website event,1,event_id,integer,False,Source identifier/foreign key,Event identifier.
+PostgreSQL source,web_events,Operational web events data.,One website event,2,session_id,integer,False,Source identifier/foreign key,Session identifier.
+PostgreSQL source,web_events,Operational web events data.,One website event,3,event_timestamp,text or source-specific scalar,False,,Event timestamp.
+PostgreSQL source,web_events,Operational web events data.,One website event,4,event_type,text or source-specific scalar,False,,Event type.
+PostgreSQL source,web_events,Operational web events data.,One website event,5,page_url,text or source-specific scalar,False,,Page url.
+PostgreSQL source,web_events,Operational web events data.,One website event,6,product_id,decimal/number,True,Source identifier/foreign key,Product identifier.
+PostgreSQL source,web_events,Operational web events data.,One website event,7,order_id,decimal/number,True,Source identifier/foreign key,Order identifier.
+PostgreSQL source,web_events,Operational web events data.,One website event,8,event_properties,text or source-specific scalar,False,,Event properties.
+PostgreSQL source,web_events,Operational web events data.,One website event,9,created_at,text or source-specific scalar,False,,Created at.
+PostgreSQL source,web_sessions,Operational web sessions data.,One website session,1,session_id,integer,False,Source identifier/foreign key,Session identifier.
+PostgreSQL source,web_sessions,Operational web sessions data.,One website session,2,web_user_id,integer,False,Source identifier/foreign key,Web user identifier.
+PostgreSQL source,web_sessions,Operational web sessions data.,One website session,3,session_start_utc,text or source-specific scalar,False,,Session start utc.
+PostgreSQL source,web_sessions,Operational web sessions data.,One website session,4,session_end_utc,text or source-specific scalar,False,,Session end utc.
+PostgreSQL source,web_sessions,Operational web sessions data.,One website session,5,source_channel,text or source-specific scalar,False,,Source channel.
+PostgreSQL source,web_sessions,Operational web sessions data.,One website session,6,campaign_id,decimal/number,True,Source identifier/foreign key,Campaign identifier.
+PostgreSQL source,web_sessions,Operational web sessions data.,One website session,7,device_type,text or source-specific scalar,False,,Device type.
+PostgreSQL source,web_sessions,Operational web sessions data.,One website session,8,country_code,text or source-specific scalar,False,,Country code.
+PostgreSQL source,web_sessions,Operational web sessions data.,One website session,9,converted_order_id,decimal/number,True,Source identifier/foreign key,Converted order identifier.
+PostgreSQL source,web_sessions,Operational web sessions data.,One website session,10,created_at,text or source-specific scalar,False,,Created at.
+PostgreSQL source,web_users,Operational web users data.,One website user identity,1,web_user_id,integer,False,Source identifier/foreign key,Web user identifier.
+PostgreSQL source,web_users,Operational web users data.,One website user identity,2,customer_id,decimal/number,True,Source identifier/foreign key,Customer identifier.
+PostgreSQL source,web_users,Operational web users data.,One website user identity,3,anonymous_cookie_id,text or source-specific scalar,False,Source identifier/foreign key,Anonymous cookie identifier.
+PostgreSQL source,web_users,Operational web users data.,One website user identity,4,email_hash,text or source-specific scalar,False,,Email hash.
+PostgreSQL source,web_users,Operational web users data.,One website user identity,5,created_at,text or source-specific scalar,False,,Created at.
+PostgreSQL source,web_users,Operational web users data.,One website user identity,6,updated_at,text or source-specific scalar,False,,Updated at.
+File feed,promotion_calendar,Operational promotion calendar data.,One promotion,1,promotion_code,text or source-specific scalar,False,,Promotion code.
+File feed,promotion_calendar,Operational promotion calendar data.,One promotion,2,promotion_name,text or source-specific scalar,False,,Promotion name.
+File feed,promotion_calendar,Operational promotion calendar data.,One promotion,3,start_date,text or source-specific scalar,False,,Start date.
+File feed,promotion_calendar,Operational promotion calendar data.,One promotion,4,end_date,text or source-specific scalar,False,,End date.
+File feed,promotion_calendar,Operational promotion calendar data.,One promotion,5,discount_type,text or source-specific scalar,False,,Discount type.
+File feed,promotion_calendar,Operational promotion calendar data.,One promotion,6,discount_value,integer,False,,Discount value.
+File feed,promotion_calendar,Operational promotion calendar data.,One promotion,7,channel_code,text or source-specific scalar,False,,Channel code.
+File feed,returns,Operational returns data.,One return record,1,return_id,text or source-specific scalar,False,Source identifier/foreign key,Return identifier.
+File feed,returns,Operational returns data.,One return record,2,order_id,integer,False,Source identifier/foreign key,Order identifier.
+File feed,returns,Operational returns data.,One return record,3,order_item_id,integer,False,Source identifier/foreign key,Order item identifier.
+File feed,returns,Operational returns data.,One return record,4,product_id,integer,False,Source identifier/foreign key,Product identifier.
+File feed,returns,Operational returns data.,One return record,5,customer_id,integer,False,Source identifier/foreign key,Customer identifier.
+File feed,returns,Operational returns data.,One return record,6,return_date,text or source-specific scalar,False,,Return date.
+File feed,returns,Operational returns data.,One return record,7,return_quantity,integer,False,,Return quantity.
+File feed,returns,Operational returns data.,One return record,8,return_reason,text or source-specific scalar,False,,Return reason.
+File feed,returns,Operational returns data.,One return record,9,refund_amount,decimal/number,False,,Refund amount.
+File feed,returns,Operational returns data.,One return record,10,currency_code,text or source-specific scalar,False,,Currency code.
+File feed,returns,Operational returns data.,One return record,11,source_file_date,text or source-specific scalar,False,,Source file date.
+File feed,supplier_cost_updates,Operational supplier cost updates data.,One supplier/SKU cost change,1,supplier_cost_update_id,text or source-specific scalar,False,Source identifier/foreign key,Supplier cost update identifier.
+File feed,supplier_cost_updates,Operational supplier cost updates data.,One supplier/SKU cost change,2,supplier_code,text or source-specific scalar,False,,Supplier code.
+File feed,supplier_cost_updates,Operational supplier cost updates data.,One supplier/SKU cost change,3,sku,text or source-specific scalar,False,,Stock keeping unit.
+File feed,supplier_cost_updates,Operational supplier cost updates data.,One supplier/SKU cost change,4,effective_date,text or source-specific scalar,False,,Effective date.
+File feed,supplier_cost_updates,Operational supplier cost updates data.,One supplier/SKU cost change,5,new_unit_cost,decimal/number,False,,New unit cost.
+File feed,supplier_cost_updates,Operational supplier cost updates data.,One supplier/SKU cost change,6,currency_code,text or source-specific scalar,False,,Currency code.
+Gold,dim_campaign,Campaign definitions used by sessions and spend.,One campaign,1,campaign_key,INT,False,Primary key,Campaign key.
+Gold,dim_campaign,Campaign definitions used by sessions and spend.,One campaign,2,campaign_code,VARCHAR(30),False,Natural key,Campaign code.
+Gold,dim_campaign,Campaign definitions used by sessions and spend.,One campaign,3,campaign_name,NVARCHAR(200),False,,Campaign name.
+Gold,dim_campaign,Campaign definitions used by sessions and spend.,One campaign,4,channel,VARCHAR(40),True,,Channel.
+Gold,dim_campaign,Campaign definitions used by sessions and spend.,One campaign,5,start_date,DATE,True,,Start date.
+Gold,dim_campaign,Campaign definitions used by sessions and spend.,One campaign,6,end_date,DATE,True,,End date.
+Gold,dim_campaign,Campaign definitions used by sessions and spend.,One campaign,7,budget_amount,"DECIMAL(14,2)",True,,Budget amount.
+Gold,dim_campaign,Campaign definitions used by sessions and spend.,One campaign,8,currency_code,VARCHAR(3),True,,Currency code.
+Gold,dim_campaign,Campaign definitions used by sessions and spend.,One campaign,9,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,dim_campaign,Campaign definitions used by sessions and spend.,One campaign,10,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,dim_campaign,Campaign definitions used by sessions and spend.,One campaign,11,source_system,VARCHAR(30),False,,Source system.
+Gold,dim_channel,Conformed sales and marketing channels.,One conformed channel,1,channel_key,INT,False,Primary key,Channel key.
+Gold,dim_channel,Conformed sales and marketing channels.,One conformed channel,2,channel_code,VARCHAR(30),False,Natural key,Channel code.
+Gold,dim_channel,Conformed sales and marketing channels.,One conformed channel,3,channel_name,VARCHAR(80),False,,Channel name.
+Gold,dim_channel,Conformed sales and marketing channels.,One conformed channel,4,channel_group,VARCHAR(80),False,,Channel group.
+Gold,dim_channel,Conformed sales and marketing channels.,One conformed channel,5,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,dim_channel,Conformed sales and marketing channels.,One conformed channel,6,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,dim_channel,Conformed sales and marketing channels.,One conformed channel,7,source_system,VARCHAR(30),False,,Source system.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,1,customer_key,BIGINT,False,Primary key,Customer key.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,2,customer_number,VARCHAR(25),False,Natural key,Customer number.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,3,first_name,NVARCHAR(80),False,,First name.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,4,last_name,NVARCHAR(80),False,,Last name.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,5,email,NVARCHAR(255),True,,Email.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,6,state_code,VARCHAR(10),True,,State code.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,7,loyalty_tier,VARCHAR(20),False,,Loyalty tier.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,8,signup_date,DATE,True,,Signup date.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,9,effective_start_date,DATE,False,,Effective start date.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,10,effective_end_date,DATE,False,,Effective end date.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,11,is_current,BIT,False,,Is current.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,12,record_hash,CHAR(64),True,,Record hash.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,13,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,14,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,dim_customer,Customer descriptive history using SCD Type 2.,One historical version of one customer,15,source_system,VARCHAR(30),False,,Source system.
+Gold,dim_date,Reusable calendar attributes for consistent time analysis.,One calendar date,1,date_key,INT,False,Primary key,Date key.
+Gold,dim_date,Reusable calendar attributes for consistent time analysis.,One calendar date,2,full_date,DATE,False,,Full date.
+Gold,dim_date,Reusable calendar attributes for consistent time analysis.,One calendar date,3,day_number,TINYINT,False,,Day number.
+Gold,dim_date,Reusable calendar attributes for consistent time analysis.,One calendar date,4,day_name,VARCHAR(10),False,,Day name.
+Gold,dim_date,Reusable calendar attributes for consistent time analysis.,One calendar date,5,week_number,TINYINT,False,,Week number.
+Gold,dim_date,Reusable calendar attributes for consistent time analysis.,One calendar date,6,month_number,TINYINT,False,,Month number.
+Gold,dim_date,Reusable calendar attributes for consistent time analysis.,One calendar date,7,month_name,VARCHAR(10),False,,Month name.
+Gold,dim_date,Reusable calendar attributes for consistent time analysis.,One calendar date,8,quarter_number,TINYINT,False,,Quarter number.
+Gold,dim_date,Reusable calendar attributes for consistent time analysis.,One calendar date,9,calendar_year,SMALLINT,False,,Calendar year.
+Gold,dim_date,Reusable calendar attributes for consistent time analysis.,One calendar date,10,is_weekend,BIT,False,,Is weekend.
+Gold,dim_date,Reusable calendar attributes for consistent time analysis.,One calendar date,11,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,dim_date,Reusable calendar attributes for consistent time analysis.,One calendar date,12,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,dim_date,Reusable calendar attributes for consistent time analysis.,One calendar date,13,source_system,VARCHAR(30),False,,Source system.
+Gold,dim_employee,Current employee attributes for assisted store sales.,One current employee,1,employee_key,INT,False,Primary key,Employee key.
+Gold,dim_employee,Current employee attributes for assisted store sales.,One current employee,2,employee_number,VARCHAR(20),False,Natural key,Employee number.
+Gold,dim_employee,Current employee attributes for assisted store sales.,One current employee,3,employee_name,NVARCHAR(170),False,,Employee name.
+Gold,dim_employee,Current employee attributes for assisted store sales.,One current employee,4,job_title,NVARCHAR(100),True,,Job title.
+Gold,dim_employee,Current employee attributes for assisted store sales.,One current employee,5,store_code,VARCHAR(20),True,,Store code.
+Gold,dim_employee,Current employee attributes for assisted store sales.,One current employee,6,active_flag,BIT,False,,Active flag.
+Gold,dim_employee,Current employee attributes for assisted store sales.,One current employee,7,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,dim_employee,Current employee attributes for assisted store sales.,One current employee,8,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,dim_employee,Current employee attributes for assisted store sales.,One current employee,9,source_system,VARCHAR(30),False,,Source system.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,1,product_key,BIGINT,False,Primary key,Product key.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,2,sku,VARCHAR(30),False,Natural key,Stock keeping unit.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,3,product_name,NVARCHAR(200),False,,Product name.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,4,category_name,NVARCHAR(100),False,,Category name.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,5,brand,NVARCHAR(100),False,,Brand.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,6,supplier_code,VARCHAR(20),False,,Supplier code.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,7,unit_cost,"DECIMAL(12,2)",True,,Unit cost.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,8,list_price,"DECIMAL(12,2)",True,,List price.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,9,effective_start_date,DATE,False,,Effective start date.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,10,effective_end_date,DATE,False,,Effective end date.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,11,is_current,BIT,False,,Is current.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,12,record_hash,CHAR(64),True,,Record hash.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,13,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,14,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,dim_product,Product descriptive and cost history using SCD Type 2.,One historical version of one product,15,source_system,VARCHAR(30),False,,Source system.
+Gold,dim_promotion,Promotion definitions used on sales lines.,One promotion,1,promotion_key,INT,False,Primary key,Promotion key.
+Gold,dim_promotion,Promotion definitions used on sales lines.,One promotion,2,promotion_code,VARCHAR(30),False,Natural key,Promotion code.
+Gold,dim_promotion,Promotion definitions used on sales lines.,One promotion,3,promotion_name,NVARCHAR(150),False,,Promotion name.
+Gold,dim_promotion,Promotion definitions used on sales lines.,One promotion,4,discount_type,VARCHAR(30),True,,Discount type.
+Gold,dim_promotion,Promotion definitions used on sales lines.,One promotion,5,discount_value,"DECIMAL(12,4)",True,,Discount value.
+Gold,dim_promotion,Promotion definitions used on sales lines.,One promotion,6,start_date,DATE,True,,Start date.
+Gold,dim_promotion,Promotion definitions used on sales lines.,One promotion,7,end_date,DATE,True,,End date.
+Gold,dim_promotion,Promotion definitions used on sales lines.,One promotion,8,channel_code,VARCHAR(20),True,,Channel code.
+Gold,dim_promotion,Promotion definitions used on sales lines.,One promotion,9,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,dim_promotion,Promotion definitions used on sales lines.,One promotion,10,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,dim_promotion,Promotion definitions used on sales lines.,One promotion,11,source_system,VARCHAR(30),False,,Source system.
+Gold,dim_store,Current store attributes used by sales and operations facts.,One current store,1,store_key,INT,False,Primary key,Store key.
+Gold,dim_store,Current store attributes used by sales and operations facts.,One current store,2,store_code,VARCHAR(20),False,Natural key,Store code.
+Gold,dim_store,Current store attributes used by sales and operations facts.,One current store,3,store_name,NVARCHAR(150),False,,Store name.
+Gold,dim_store,Current store attributes used by sales and operations facts.,One current store,4,region,VARCHAR(30),False,,Region.
+Gold,dim_store,Current store attributes used by sales and operations facts.,One current store,5,state_code,VARCHAR(10),True,,State code.
+Gold,dim_store,Current store attributes used by sales and operations facts.,One current store,6,city,NVARCHAR(100),True,,City.
+Gold,dim_store,Current store attributes used by sales and operations facts.,One current store,7,open_date,DATE,True,,Open date.
+Gold,dim_store,Current store attributes used by sales and operations facts.,One current store,8,active_flag,BIT,False,,Active flag.
+Gold,dim_store,Current store attributes used by sales and operations facts.,One current store,9,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,dim_store,Current store attributes used by sales and operations facts.,One current store,10,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,dim_store,Current store attributes used by sales and operations facts.,One current store,11,source_system,VARCHAR(30),False,,Source system.
+Gold,dim_supplier,Current supplier attributes and lead-time context.,One current supplier,1,supplier_key,INT,False,Primary key,Supplier key.
+Gold,dim_supplier,Current supplier attributes and lead-time context.,One current supplier,2,supplier_code,VARCHAR(20),False,Natural key,Supplier code.
+Gold,dim_supplier,Current supplier attributes and lead-time context.,One current supplier,3,supplier_name,NVARCHAR(150),False,,Supplier name.
+Gold,dim_supplier,Current supplier attributes and lead-time context.,One current supplier,4,country_code,VARCHAR(10),True,,Country code.
+Gold,dim_supplier,Current supplier attributes and lead-time context.,One current supplier,5,lead_time_days,INT,True,,Lead time days.
+Gold,dim_supplier,Current supplier attributes and lead-time context.,One current supplier,6,active_flag,BIT,False,,Active flag.
+Gold,dim_supplier,Current supplier attributes and lead-time context.,One current supplier,7,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,dim_supplier,Current supplier attributes and lead-time context.,One current supplier,8,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,dim_supplier,Current supplier attributes and lead-time context.,One current supplier,9,source_system,VARCHAR(30),False,,Source system.
+Gold,fact_inventory_snapshot,"Point-in-time stock, risk, and value at store-product-date grain.",One snapshot date-store-product,1,inventory_snapshot_key,BIGINT,False,Primary key,Inventory snapshot key.
+Gold,fact_inventory_snapshot,"Point-in-time stock, risk, and value at store-product-date grain.",One snapshot date-store-product,2,snapshot_date_key,INT,False,Foreign key,Snapshot date key.
+Gold,fact_inventory_snapshot,"Point-in-time stock, risk, and value at store-product-date grain.",One snapshot date-store-product,3,store_key,INT,False,Foreign key,Store key.
+Gold,fact_inventory_snapshot,"Point-in-time stock, risk, and value at store-product-date grain.",One snapshot date-store-product,4,product_key,BIGINT,False,Foreign key,Product key.
+Gold,fact_inventory_snapshot,"Point-in-time stock, risk, and value at store-product-date grain.",One snapshot date-store-product,5,quantity_on_hand,INT,False,,Quantity on hand.
+Gold,fact_inventory_snapshot,"Point-in-time stock, risk, and value at store-product-date grain.",One snapshot date-store-product,6,quantity_reserved,INT,False,,Quantity reserved.
+Gold,fact_inventory_snapshot,"Point-in-time stock, risk, and value at store-product-date grain.",One snapshot date-store-product,7,reorder_point,INT,False,,Reorder point.
+Gold,fact_inventory_snapshot,"Point-in-time stock, risk, and value at store-product-date grain.",One snapshot date-store-product,8,stockout_risk_flag,BIT,False,,Stockout risk flag.
+Gold,fact_inventory_snapshot,"Point-in-time stock, risk, and value at store-product-date grain.",One snapshot date-store-product,9,inventory_value_amount,"DECIMAL(18,2)",False,,Inventory value amount.
+Gold,fact_inventory_snapshot,"Point-in-time stock, risk, and value at store-product-date grain.",One snapshot date-store-product,10,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,fact_inventory_snapshot,"Point-in-time stock, risk, and value at store-product-date grain.",One snapshot date-store-product,11,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,fact_inventory_snapshot,"Point-in-time stock, risk, and value at store-product-date grain.",One snapshot date-store-product,12,source_system,VARCHAR(30),False,,Source system.
+Gold,fact_marketing_spend,"Spend, impressions, and clicks at date-campaign-channel grain.",One spend date-campaign-channel,1,marketing_spend_key,BIGINT,False,Primary key,Marketing spend key.
+Gold,fact_marketing_spend,"Spend, impressions, and clicks at date-campaign-channel grain.",One spend date-campaign-channel,2,spend_date_key,INT,False,Foreign key,Spend date key.
+Gold,fact_marketing_spend,"Spend, impressions, and clicks at date-campaign-channel grain.",One spend date-campaign-channel,3,campaign_key,INT,False,Foreign key,Campaign key.
+Gold,fact_marketing_spend,"Spend, impressions, and clicks at date-campaign-channel grain.",One spend date-campaign-channel,4,channel_key,INT,False,Foreign key,Channel key.
+Gold,fact_marketing_spend,"Spend, impressions, and clicks at date-campaign-channel grain.",One spend date-campaign-channel,5,spend_amount,"DECIMAL(16,2)",False,,Spend amount.
+Gold,fact_marketing_spend,"Spend, impressions, and clicks at date-campaign-channel grain.",One spend date-campaign-channel,6,impressions,BIGINT,False,,Impressions.
+Gold,fact_marketing_spend,"Spend, impressions, and clicks at date-campaign-channel grain.",One spend date-campaign-channel,7,clicks,BIGINT,False,,Clicks.
+Gold,fact_marketing_spend,"Spend, impressions, and clicks at date-campaign-channel grain.",One spend date-campaign-channel,8,currency_code,VARCHAR(3),False,,Currency code.
+Gold,fact_marketing_spend,"Spend, impressions, and clicks at date-campaign-channel grain.",One spend date-campaign-channel,9,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,fact_marketing_spend,"Spend, impressions, and clicks at date-campaign-channel grain.",One spend date-campaign-channel,10,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,fact_marketing_spend,"Spend, impressions, and clicks at date-campaign-channel grain.",One spend date-campaign-channel,11,source_system,VARCHAR(30),False,,Source system.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,1,return_key,BIGINT,False,Primary key,Return key.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,2,return_id,VARCHAR(40),False,Degenerate source key,Return identifier.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,3,order_item_id,BIGINT,False,,Order item identifier.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,4,return_date_key,INT,False,Foreign key,Return date key.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,5,customer_key,BIGINT,False,Foreign key,Customer key.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,6,product_key,BIGINT,False,Foreign key,Product key.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,7,store_key,INT,False,Foreign key,Store key.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,8,return_quantity,INT,False,,Return quantity.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,9,refund_amount,"DECIMAL(16,2)",False,,Refund amount.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,10,return_reason,NVARCHAR(100),False,,Return reason.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,11,currency_code,VARCHAR(3),False,,Currency code.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,12,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,13,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,fact_returns,Returned units and refunds at return-record grain.,One accepted return record,14,source_system,VARCHAR(30),False,,Source system.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,1,sales_key,BIGINT,False,Primary key,Sales key.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,2,order_item_id,BIGINT,False,Degenerate source key,Order item identifier.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,3,order_id,BIGINT,False,,Order identifier.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,4,order_number,VARCHAR(30),False,,Order number.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,5,order_date_key,INT,False,Foreign key,Order date key.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,6,customer_key,BIGINT,False,Foreign key,Customer key.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,7,product_key,BIGINT,False,Foreign key,Product key.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,8,store_key,INT,False,Foreign key,Store key.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,9,employee_key,INT,False,Foreign key,Employee key.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,10,promotion_key,INT,False,Foreign key,Promotion key.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,11,channel_key,INT,False,Foreign key,Channel key.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,12,quantity,INT,False,,Quantity.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,13,gross_sales_amount,"DECIMAL(16,2)",False,,Gross sales amount.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,14,discount_amount,"DECIMAL(16,2)",False,,Discount amount.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,15,net_sales_amount,"DECIMAL(16,2)",False,,Net sales amount.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,16,tax_amount,"DECIMAL(16,2)",False,,Tax amount.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,17,unit_cost_amount,"DECIMAL(16,2)",False,,Unit cost amount.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,18,cost_of_goods_sold,"DECIMAL(16,2)",False,,Cost of goods sold.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,19,gross_profit_amount,"DECIMAL(16,2)",False,,Gross profit amount.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,20,currency_code,VARCHAR(3),False,,Currency code.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,21,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,22,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,fact_sales,"Sales quantity, revenue, cost, discount, tax, and profit at order-item grain.",One valid order item,23,source_system,VARCHAR(30),False,,Source system.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,1,shipment_key,BIGINT,False,Primary key,Shipment key.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,2,shipment_id,BIGINT,False,Degenerate source key,Shipment identifier.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,3,order_id,BIGINT,False,,Order identifier.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,4,ship_date_key,INT,False,Foreign key,Ship date key.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,5,promised_date_key,INT,False,Foreign key,Promised date key.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,6,delivery_date_key,INT,False,Foreign key,Delivery date key.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,7,customer_key,BIGINT,False,Foreign key,Customer key.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,8,store_key,INT,False,Foreign key,Store key.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,9,carrier,NVARCHAR(100),False,,Carrier.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,10,delivery_days,INT,False,,Delivery days.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,11,on_time_flag,BIT,False,,On time flag.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,12,shipping_cost,"DECIMAL(16,2)",False,,Shipping cost.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,13,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,14,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,fact_shipments,"Delivery timing, service, and shipping cost at shipment grain.",One shipment,15,source_system,VARCHAR(30),False,,Source system.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,1,web_session_key,BIGINT,False,Primary key,Web session key.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,2,session_id,BIGINT,False,Degenerate source key,Session identifier.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,3,session_date_key,INT,False,Foreign key,Session date key.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,4,customer_key,BIGINT,False,Foreign key,Customer key.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,5,campaign_key,INT,False,Foreign key,Campaign key.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,6,channel_key,INT,False,Foreign key,Channel key.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,7,session_count,INT,False,,Session count.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,8,duration_seconds,INT,False,,Duration seconds.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,9,page_view_count,INT,False,,Page view count.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,10,add_to_cart_count,INT,False,,Add to cart count.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,11,converted_flag,BIT,False,,Converted flag.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,12,converted_order_id,BIGINT,True,,Converted order identifier.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,13,load_timestamp_utc,DATETIME,False,,Load timestamp utc.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,14,batch_id,VARCHAR(80),False,,Batch identifier.
+Gold,fact_web_sessions,Session engagement and conversion outcomes at session grain.,One web session,15,source_system,VARCHAR(30),False,,Source system.

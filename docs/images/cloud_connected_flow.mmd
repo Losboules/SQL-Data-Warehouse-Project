@@ -1,0 +1,8 @@
+flowchart LR
+  A[Managed SQL Server] --> D[Databricks]
+  B[Managed PostgreSQL] --> D
+  C[Cloud object storage] --> D
+  S[Secret-managed identity] --> D
+  D --> E[Lakeflow Jobs + quality gates]
+  E --> F[Serving warehouse / SQL endpoint]
+  F --> G[Power BI Service]

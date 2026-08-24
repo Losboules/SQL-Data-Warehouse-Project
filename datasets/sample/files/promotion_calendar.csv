@@ -1,0 +1,4 @@
+promotion_code,promotion_name,start_date,end_date,discount_type,discount_value,channel_code
+WELCOME10,New Customer Welcome,2025-01-01,2026-12-31,PERCENT,10,ONLINE
+WEEKEND15,Weekend Event,2026-01-01,2026-12-31,PERCENT,15,ALL
+FREESHIP,Free Shipping,2026-01-01,2026-12-31,SHIPPING,100,ONLINE

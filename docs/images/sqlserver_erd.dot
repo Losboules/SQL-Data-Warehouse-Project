@@ -1,0 +1,17 @@
+digraph G {
+  rankdir=LR; graph [label="SQL Server ERP Source — Simplified ERD", labelloc=t, fontsize=20]; node [shape=record, fontname="Arial"];
+  customers [label="customers|customer_id PK|customer_number|name / contact|signup / loyalty"];
+  addresses [label="addresses|address_id PK|customer_id FK|address attributes"];
+  orders [label="orders|order_id PK|customer_id FK|store_id FK|employee_id FK|channel / promotion"];
+  items [label="order_items|order_item_id PK|order_id FK|product_id FK|quantity / price / cost"];
+  products [label="products|product_id PK|category_id FK|supplier_id FK|SKU / cost / price"];
+  categories [label="product_categories|category_id PK|parent_category_id FK"];
+  suppliers [label="suppliers|supplier_id PK|supplier_code|lead time"];
+  stores [label="stores|store_id PK|store_code|region"];
+  employees [label="employees|employee_id PK|store_id FK|manager_employee_id FK"];
+  payments [label="payments|payment_id PK|order_id FK|amount / status"];
+  shipments [label="shipments|shipment_id PK|order_id FK|promised / actual dates"];
+  inventory [label="inventory_snapshots|snapshot_id PK|date + store + product"];
+  transactions [label="inventory_transactions|transaction_id PK|store_id FK|product_id FK"];
+  customers -> addresses; customers -> orders; stores -> orders; employees -> orders; orders -> items; products -> items; categories -> products; suppliers -> products; stores -> employees; orders -> payments; orders -> shipments; stores -> inventory; products -> inventory; stores -> transactions; products -> transactions;
+}

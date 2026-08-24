@@ -1,0 +1,11 @@
+# Runtime dependencies. Use Python 3.13.x for the local learning environment.
+pandas>=2.2,<3.0
+Faker>=30,<40
+PyYAML>=6,<7
+python-dotenv>=1,<2
+pyarrow>=18,<23
+SQLAlchemy>=2,<3
+pyodbc>=5.2,<6
+psycopg[binary]>=3.2,<4
+tenacity>=9,<10
+rich>=13,<15

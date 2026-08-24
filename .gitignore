@@ -1,0 +1,48 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+config/dev.yml
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Generated data: keep only the intentionally small sample folder
+/datasets/raw/**
+!/datasets/raw/**/.gitkeep
+/datasets/generated/**
+/datasets/tmp/**
+/datasets/state/**
+!/datasets/state/.gitkeep
+
+# Logs and manifests created during local runs
+/logs/**
+!/logs/.gitkeep
+/run_artifacts/**
+
+# Power BI and database artifacts
+*.pbix
+*.pbit
+*.bak
+*.bacpac
+*.mdf
+*.ldf
+
+# Databricks and local tooling
+.databricks/
+.vscode/settings.json
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
