@@ -19,10 +19,6 @@ The project demonstrates practical data engineering skills including:
 * CI/CD validation
 * Analytics and semantic-model design
 
-## Architecture
-
-![Northstar Retail Architecture](docs/images/overall_architecture.svg)
-
 ### Data flow
 
 ```text
@@ -178,8 +174,6 @@ Responsibilities include:
 
 ## Dimensional Data Model
 
-![Northstar Retail Gold Star Schema](docs/images/gold_star_schema.svg)
-
 ### Dimensions
 
 The Gold model contains nine dimensions:
@@ -265,8 +259,6 @@ The repository includes a 13-task Databricks/Lakeflow workflow:
 11. Data-quality gate
 12. Gold publication
 13. Final reconciliation and demonstration queries
-
-![Databricks Workflow Dependencies](docs/images/jobs_dependency.svg)
 
 The workflow definition includes:
 
