@@ -1,0 +1,27 @@
+[
+  {
+    "test": "customers_not_empty",
+    "status": "PASS",
+    "details": "rows=60"
+  },
+  {
+    "test": "orders_not_empty",
+    "status": "PASS",
+    "details": "rows=200"
+  },
+  {
+    "test": "orders_customer_fk",
+    "status": "PASS",
+    "details": "orphans=0"
+  },
+  {
+    "test": "items_order_fk",
+    "status": "PASS",
+    "details": "orphans=0"
+  },
+  {
+    "test": "signup_before_order",
+    "status": "PASS",
+    "details": "invalid=0"
+  }
+]

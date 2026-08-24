@@ -1,0 +1,7 @@
+digraph G {
+  rankdir=LR; graph [label="SCD Type 2 Customer Timeline", labelloc=t, fontsize=20]; node [shape=record, fontname="Arial"];
+  v1 [label="Version 1|customer_key=101|Silver tier|2025-01-01 to 2026-03-14|is_current=false"];
+  change [shape=diamond, label="Attribute change\n2026-03-15"];
+  v2 [label="Version 2|customer_key=205|Gold tier|2026-03-15 to 9999-12-31|is_current=true"];
+  v1 -> change -> v2;
+}

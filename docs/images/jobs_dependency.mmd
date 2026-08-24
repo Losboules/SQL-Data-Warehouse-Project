@@ -1,0 +1,17 @@
+flowchart TB
+  E[environment_check] --> B1[bronze_sqlserver]
+  E --> B2[bronze_postgres]
+  E --> B3[bronze_files]
+  B1 --> S1[silver_customers]
+  B3 --> S1
+  B1 --> S2[silver_products]
+  B3 --> S2
+  B1 --> S3[silver_sales]
+  B3 --> S3
+  S2 --> S3
+  B2 --> S4[silver_digital]
+  S1 --> G1[gold_dimensions]
+  S2 --> G1
+  S3 --> G1
+  S4 --> G1
+  G1 --> G2[gold_facts] --> Q[data_quality_gate] --> P[publish_gold] --> R[final_reconciliation]

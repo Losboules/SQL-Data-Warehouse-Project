@@ -1,49 +1,23 @@
-﻿$ErrorActionPreference = "Continue"
+# Runs in: Windows PowerShell
+# Purpose: show which required command-line tools Windows can find.
+$ErrorActionPreference = "Continue"
 
 $checks = @(
-    @{
-        Name = "Git"
-        Command = "git"
-        Arguments = @("--version")
-    },
-    @{
-        Name = "Python launcher"
-        Command = "py"
-        Arguments = @("--version")
-    },
-    @{
-        Name = "Python"
-        Command = "python"
-        Arguments = @("--version")
-    },
-    @{
-        Name = "VS Code"
-        Command = "code"
-        Arguments = @("--version")
-    },
-    @{
-        Name = "PostgreSQL psql"
-        Command = "psql"
-        Arguments = @("--version")
-    }
+    @{ Name = "Git"; Command = "git --version" },
+    @{ Name = "Python launcher"; Command = "py --version" },
+    @{ Name = "Python"; Command = "python --version" },
+    @{ Name = "VS Code"; Command = "code --version" },
+    @{ Name = "PostgreSQL psql"; Command = "psql --version" }
 )
 
 foreach ($check in $checks) {
     Write-Host "`n=== $($check.Name) ==="
-
-    $installedCommand = Get-Command $check.Command -ErrorAction SilentlyContinue
-
-    if ($null -eq $installedCommand) {
-        Write-Warning "$($check.Name) was not found on PATH."
+    try {
+        Invoke-Expression $check.Command
     }
-    else {
-        & $check.Command @($check.Arguments)
+    catch {
+        Write-Warning "$($check.Name) was not found on PATH. Read Phase 2 before changing PATH manually."
     }
 }
 
-Write-Host "`nThe following applications must also be checked through their interfaces:"
-Write-Host "- SQL Server"
-Write-Host "- SQL Server Management Studio"
-Write-Host "- pgAdmin"
-Write-Host "- Power BI Desktop"
-Write-Host "- Databricks"
+Write-Host "`nSQL Server, SSMS, pgAdmin, Power BI Desktop, and Databricks are verified through their user interfaces."

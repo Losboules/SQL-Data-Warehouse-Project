@@ -1,0 +1,10 @@
+digraph G {
+  rankdir=TB; graph [label="Lakeflow Jobs Dependency Graph", labelloc=t, fontsize=20]; node [shape=box, style="rounded", fontname="Arial"];
+  env [label="environment_check"];
+  bsql [label="bronze_sqlserver"]; bpg [label="bronze_postgres"]; bf [label="bronze_files"];
+  sc [label="silver_customers"]; sp [label="silver_products"]; ss [label="silver_sales"]; sd [label="silver_digital"];
+  gd [label="gold_dimensions"]; gf [label="gold_facts"]; dq [label="data_quality_gate"]; pub [label="publish_gold"]; rec [label="final_reconciliation"];
+  env -> bsql; env -> bpg; env -> bf;
+  bsql -> sc; bf -> sc; bsql -> sp; bf -> sp; bsql -> ss; bf -> ss; sp -> ss; bpg -> sd;
+  sc -> gd; sp -> gd; ss -> gd; sd -> gd; gd -> gf -> dq -> pub -> rec;
+}

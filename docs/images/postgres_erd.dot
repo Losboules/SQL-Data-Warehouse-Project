@@ -1,0 +1,10 @@
+digraph G {
+  rankdir=LR; graph [label="PostgreSQL Digital Source — Simplified ERD", labelloc=t, fontsize=20]; node [shape=record, fontname="Arial"];
+  users [label="web_users|web_user_id PK|customer_id reference|cookie / email hash"];
+  sessions [label="web_sessions|session_id PK|web_user_id FK|campaign_id FK|channel / device|converted_order_id"];
+  events [label="web_events|event_id PK|session_id FK|type / timestamp|product / order references"];
+  campaigns [label="campaigns|campaign_id PK|campaign_code|channel / dates / budget"];
+  touchpoints [label="campaign_touchpoints|touchpoint_id PK|web_user_id FK|session_id FK|campaign_id FK|weight"];
+  spend [label="marketing_spend|spend_id PK|date / campaign / channel|spend / impressions / clicks"];
+  users -> sessions; sessions -> events; campaigns -> sessions; users -> touchpoints; sessions -> touchpoints; campaigns -> touchpoints; campaigns -> spend;
+}

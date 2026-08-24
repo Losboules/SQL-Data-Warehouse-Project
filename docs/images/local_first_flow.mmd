@@ -1,0 +1,8 @@
+flowchart TB
+  A[Generate fictional data] --> B[Load local SQL Server + PostgreSQL]
+  B --> C[Extract batch + manifest + checksums]
+  C --> D[Manual upload to Databricks volume]
+  D --> E[Bronze → Silver → Gold → quality]
+  E --> F[Manual download of validated Gold]
+  F --> G[Transactional SQL Server publication]
+  G --> H[Power BI Import + SQL validation]

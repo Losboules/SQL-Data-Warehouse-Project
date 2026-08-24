@@ -1,0 +1,16 @@
+digraph G {
+  rankdir=LR; graph [label="Northstar Retail End-to-End Data Platform", labelloc=t, fontsize=20, nodesep=0.45, ranksep=0.7];
+  node [shape=box, style="rounded", fontname="Arial"];
+  edge [fontname="Arial"];
+  subgraph cluster_sources { label="Operational sources"; sqlserver [label="SQL Server\nNorthstarRetail_ERP"]; postgres [label="PostgreSQL\nnorthstar_digital"]; files [label="CSV + JSON feeds"]; }
+  python [label="Python generation, load,\nvalidation, extraction"];
+  volume [label="Unity Catalog volume\nmanual Track A upload"];
+  bronze [label="Bronze Delta\nraw + audit metadata"];
+  silver [label="Silver Delta\ntyped + conformed + quarantine"];
+  gold [label="Gold Delta\n9 dimensions + 6 facts"];
+  quality [label="Blocking quality gate\nreconciliation + audit"];
+  export [label="Validated Gold export\nmanual Track A download"];
+  warehouse [label="SQL Server\nNorthstarRetail_DW"];
+  powerbi [label="Power BI semantic model\nand report requirements"];
+  sqlserver -> python; postgres -> python; files -> python; python -> volume -> bronze -> silver -> gold -> quality -> export -> warehouse -> powerbi;
+}

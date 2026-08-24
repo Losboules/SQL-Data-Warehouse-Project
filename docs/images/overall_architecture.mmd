@@ -1,0 +1,12 @@
+flowchart LR
+  A[SQL Server ERP] --> D[Python generation/load/extract]
+  B[PostgreSQL digital] --> D
+  C[CSV + JSON feeds] --> D
+  D --> E[Unity Catalog volume]
+  E --> F[Bronze Delta]
+  F --> G[Silver Delta + quarantine]
+  G --> H[Gold: 9 dimensions + 6 facts]
+  H --> I[Blocking quality gate]
+  I --> J[Validated Gold export]
+  J --> K[SQL Server warehouse]
+  K --> L[Power BI semantic model]

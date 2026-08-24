@@ -1,0 +1,115 @@
+// Northstar Retail Power BI measures
+// Put these in a dedicated empty table named _Measures.
+// Replace column names only if your loaded warehouse schema differs.
+
+Total Revenue =
+SUM ( fact_sales[net_sales_amount] )
+
+Gross Profit =
+SUM ( fact_sales[gross_profit_amount] )
+
+Gross Margin % =
+DIVIDE ( [Gross Profit], [Total Revenue] )
+
+Promotion Gross Profit =
+CALCULATE (
+    [Gross Profit],
+    KEEPFILTERS ( dim_promotion[promotion_key] <> 0 )
+)
+
+Orders =
+DISTINCTCOUNT ( fact_sales[order_id] )
+
+Units Sold =
+SUM ( fact_sales[quantity] )
+
+Average Order Value =
+DIVIDE ( [Total Revenue], [Orders] )
+
+Returned Units =
+SUM ( fact_returns[return_quantity] )
+
+Return Rate =
+DIVIDE ( [Returned Units], [Units Sold] )
+
+Delivered Shipments =
+CALCULATE (
+    COUNTROWS ( fact_shipments ),
+    fact_shipments[delivery_date_key] <> 0
+)
+
+On-Time Shipments =
+CALCULATE (
+    [Delivered Shipments],
+    fact_shipments[on_time_flag] = TRUE ()
+)
+
+On-Time Delivery % =
+DIVIDE ( [On-Time Shipments], [Delivered Shipments] )
+
+Marketing Spend =
+SUM ( fact_marketing_spend[spend_amount] )
+
+Web Sessions =
+SUM ( fact_web_sessions[session_count] )
+
+Converted Sessions =
+CALCULATE (
+    [Web Sessions],
+    fact_web_sessions[converted_flag] = TRUE ()
+)
+
+Conversion Rate =
+DIVIDE ( [Converted Sessions], [Web Sessions] )
+
+Attributed Revenue =
+VAR ConvertedOrders =
+    FILTER (
+        VALUES ( fact_web_sessions[converted_order_id] ),
+        NOT ISBLANK ( fact_web_sessions[converted_order_id] )
+    )
+RETURN
+    CALCULATE (
+        [Total Revenue],
+        TREATAS ( ConvertedOrders, fact_sales[order_id] )
+    )
+
+Return on Ad Spend =
+DIVIDE ( [Attributed Revenue], [Marketing Spend] )
+
+Purchasing Customers =
+CALCULATE (
+    DISTINCTCOUNT ( fact_sales[customer_key] ),
+    fact_sales[customer_key] <> 0
+)
+
+New Customers =
+VAR PeriodStart = MIN ( dim_date[full_date] )
+VAR PeriodEnd = MAX ( dim_date[full_date] )
+RETURN
+    COUNTROWS (
+        FILTER (
+            VALUES ( fact_sales[customer_key] ),
+            fact_sales[customer_key] <> 0
+                && VAR FirstOrderDate =
+                    CALCULATE (
+                        MIN ( dim_date[full_date] ),
+                        REMOVEFILTERS ( dim_date )
+                    )
+                RETURN
+                    FirstOrderDate >= PeriodStart
+                        && FirstOrderDate <= PeriodEnd
+        )
+    )
+
+Returning Customers =
+[Purchasing Customers] - [New Customers]
+
+Inventory On Hand =
+SUM ( fact_inventory_snapshot[quantity_on_hand] )
+
+Stockout Risk Count =
+CALCULATE (
+    COUNTROWS ( fact_inventory_snapshot ),
+    fact_inventory_snapshot[stockout_risk_flag] = TRUE ()
+)

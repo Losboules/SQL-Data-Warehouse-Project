@@ -1,0 +1,8 @@
+erDiagram
+  WEB_USERS ||--o{ WEB_SESSIONS : starts
+  WEB_SESSIONS ||--o{ WEB_EVENTS : contains
+  CAMPAIGNS ||--o{ WEB_SESSIONS : influences
+  WEB_USERS ||--o{ CAMPAIGN_TOUCHPOINTS : receives
+  WEB_SESSIONS ||--o{ CAMPAIGN_TOUCHPOINTS : includes
+  CAMPAIGNS ||--o{ CAMPAIGN_TOUCHPOINTS : creates
+  CAMPAIGNS ||--o{ MARKETING_SPEND : incurs

@@ -1,0 +1,25 @@
+digraph G {
+  rankdir=LR; graph [label="Northstar Retail Gold Star Schema", labelloc=t, fontsize=20, nodesep=0.35]; node [shape=box, style="rounded", fontname="Arial"];
+  date [label="dim_date"];
+  customer [label="dim_customer\nSCD Type 2"];
+  product [label="dim_product\nSCD Type 2"];
+  store [label="dim_store"];
+  employee [label="dim_employee"];
+  supplier [label="dim_supplier"];
+  promotion [label="dim_promotion"];
+  channel [label="dim_channel"];
+  campaign [label="dim_campaign"];
+  sales [shape=record, label="fact_sales|one order item"];
+  returns [shape=record, label="fact_returns|one return record"];
+  inventory [shape=record, label="fact_inventory_snapshot|date-store-product"];
+  shipments [shape=record, label="fact_shipments|one shipment"];
+  sessions [shape=record, label="fact_web_sessions|one session"];
+  spend [shape=record, label="fact_marketing_spend|date-campaign-channel"];
+  date -> sales; customer -> sales; product -> sales; store -> sales; employee -> sales; promotion -> sales; channel -> sales;
+  date -> returns; customer -> returns; product -> returns; store -> returns;
+  date -> inventory; product -> inventory; store -> inventory;
+  date -> shipments; customer -> shipments; store -> shipments;
+  date -> sessions; customer -> sessions; campaign -> sessions; channel -> sessions;
+  date -> spend; campaign -> spend; channel -> spend;
+  supplier -> product [style=dashed, label="documented snowflake"];
+}

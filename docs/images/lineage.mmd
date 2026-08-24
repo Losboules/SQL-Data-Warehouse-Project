@@ -1,0 +1,10 @@
+flowchart LR
+  A[Source] --> B[Extraction manifest]
+  B --> C[Bronze audit row]
+  C --> D[Silver accepted / quarantined]
+  D --> E[Dimension lookup]
+  E --> F[Fact row]
+  F --> G[Quality + reconciliation]
+  G --> H[Export manifest]
+  H --> I[Warehouse audit]
+  I --> J[Validated SQL/DAX KPI]

@@ -1,0 +1,60 @@
+default_seed: 20260815
+default_scale: quick
+scales:
+  quick:
+    customers: 60
+    products: 30
+    suppliers: 8
+    stores: 5
+    employees: 20
+    orders: 200
+    web_users: 80
+    web_sessions: 300
+    campaigns: 8
+    history_days: 90
+  small:
+    customers: 500
+    products: 150
+    suppliers: 25
+    stores: 10
+    employees: 80
+    orders: 3000
+    web_users: 700
+    web_sessions: 5000
+    campaigns: 15
+    history_days: 365
+  medium:
+    customers: 5000
+    products: 500
+    suppliers: 80
+    stores: 30
+    employees: 350
+    orders: 50000
+    web_users: 7000
+    web_sessions: 80000
+    campaigns: 40
+    history_days: 730
+  portfolio:
+    customers: 25000
+    products: 1500
+    suppliers: 250
+    stores: 75
+    employees: 1200
+    orders: 500000
+    web_users: 35000
+    web_sessions: 750000
+    campaigns: 100
+    history_days: 1095
+quality_issues:
+  duplicate_business_keys: 3
+  null_emails: 3
+  malformed_emails: 2
+  whitespace_and_case: 4
+  invalid_state_codes: 2
+  impossible_quantities: 2
+  unknown_file_references: 2
+  mixed_date_formats: 6
+  late_arriving_records: 2
+  out_of_order_events: 2
+  currency_inconsistencies: 2
+  timezone_differences: 4

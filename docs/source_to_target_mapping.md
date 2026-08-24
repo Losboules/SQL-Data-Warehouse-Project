@@ -1,0 +1,20 @@
+# Source-to-Target Mapping
+
+Table-level lineage contract for the implemented Northstar Retail pipeline.
+
+| source_system    | source_objects                        | silver_object                    | gold_object                  | target_grain_key      | transformation_summary                                                                     |
+|:-----------------|:--------------------------------------|:---------------------------------|:-----------------------------|:----------------------|:-------------------------------------------------------------------------------------------|
+| SQLSERVER_ERP    | customers + addresses                 | silver.customers                 | gold.dim_customer            | customer_number       | Trim/case standardize, choose latest duplicate, attach default state, SCD2 hash            |
+| SQLSERVER_ERP    | products + categories + suppliers     | silver.products                  | gold.dim_product             | sku                   | Conform category/supplier, apply latest supplier cost, SCD2 hash                           |
+| SQLSERVER_ERP    | stores                                | bronze.erp_stores                | gold.dim_store               | store_code            | Trim/uppercase and Type 1 upsert                                                           |
+| SQLSERVER_ERP    | employees + stores                    | bronze.erp_employees             | gold.dim_employee            | employee_number       | Conform employee name and store code; Type 1 upsert                                        |
+| SQLSERVER_ERP    | suppliers                             | bronze.erp_suppliers             | gold.dim_supplier            | supplier_code         | Trim/uppercase and Type 1 upsert                                                           |
+| FILE_FEED        | promotion_calendar.csv                | silver.promotions                | gold.dim_promotion           | promotion_code        | Parse dates/decimal discount and Type 1 upsert                                             |
+| CONFORMED        | static channel contract               | n/a                              | gold.dim_channel             | channel_code          | Create consistent sales/marketing channel members                                          |
+| POSTGRES_DIGITAL | campaigns                             | silver.campaigns                 | gold.dim_campaign            | campaign_code         | Parse dates/budget and Type 1 upsert                                                       |
+| SQLSERVER_ERP    | orders + order_items                  | silver.sales                     | gold.fact_sales              | order_item_id         | Reject nonpositive quantity; calculate revenue, COGS, profit; resolve effective keys       |
+| FILE_FEED        | returns.csv + orders                  | silver.returns                   | gold.fact_returns            | return_id             | Parse mixed dates, reject invalid quantity/date, resolve order/store/customer/product keys |
+| SQLSERVER_ERP    | inventory_snapshots                   | silver.inventory_snapshots       | gold.fact_inventory_snapshot | date+store+product    | Cast quantities, calculate risk and inventory value                                        |
+| SQLSERVER_ERP    | shipments + orders                    | silver.shipments                 | gold.fact_shipments          | shipment_id           | Parse dates, calculate delivery days/on-time flag, resolve order dimensions                |
+| POSTGRES_DIGITAL | web_sessions + web_users + web_events | silver.web_sessions + web_events | gold.fact_web_sessions       | session_id            | Normalize UTC timestamps, quarantine out-of-order events, aggregate engagement             |
+| POSTGRES_DIGITAL | marketing_spend + campaigns           | silver.marketing_spend           | gold.fact_marketing_spend    | date+campaign+channel | Reject negative/non-USD rows, aggregate spend/impressions/clicks                           |

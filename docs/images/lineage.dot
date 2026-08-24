@@ -1,0 +1,14 @@
+digraph G {
+  rankdir=LR; graph [label="Claim-to-Evidence Data Lineage", labelloc=t, fontsize=20]; node [shape=box, style="rounded", fontname="Arial"];
+  source [label="Source records"];
+  extract [label="Extraction batch\nmanifest + checksum"];
+  bronze [label="Bronze row + source metadata"];
+  silver [label="Silver accepted row\nor quarantine rule"];
+  dimension [label="Dimension natural key\n→ surrogate key"];
+  fact [label="Fact row at declared grain"];
+  quality [label="Quality result + reconciliation"];
+  export [label="Gold export manifest"];
+  warehouse [label="Warehouse audit batch"];
+  report [label="SQL/DAX validated KPI"];
+  source -> extract -> bronze -> silver -> dimension -> fact -> quality -> export -> warehouse -> report;
+}

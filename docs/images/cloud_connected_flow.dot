@@ -1,0 +1,12 @@
+digraph G {
+  rankdir=LR; graph [label="Track B — Optional Cloud-Connected Flow", labelloc=t, fontsize=20]; node [shape=box, style="rounded", fontname="Arial"];
+  erp [label="Managed SQL Server / Azure SQL"];
+  digital [label="Managed PostgreSQL"];
+  storage [label="Cloud object storage"];
+  secrets [label="Secret-managed identity"];
+  databricks [label="Databricks Lakehouse\nJDBC / Auto Loader / Delta"];
+  jobs [label="Lakeflow Jobs + quality gates"];
+  serving [label="Cloud serving warehouse / SQL endpoint"];
+  bi [label="Power BI Service"];
+  erp -> databricks; digital -> databricks; storage -> databricks; secrets -> databricks; databricks -> jobs -> serving -> bi;
+}

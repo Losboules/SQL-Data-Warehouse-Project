@@ -1,0 +1,26 @@
+flowchart LR
+  DDATE[dim_date] --> FS[fact_sales]
+  DC[dim_customer SCD2] --> FS
+  DP[dim_product SCD2] --> FS
+  DS[dim_store] --> FS
+  DE[dim_employee] --> FS
+  DPR[dim_promotion] --> FS
+  DCH[dim_channel] --> FS
+  DDATE --> FR[fact_returns]
+  DC --> FR
+  DP --> FR
+  DS --> FR
+  DDATE --> FI[fact_inventory_snapshot]
+  DP --> FI
+  DS --> FI
+  DDATE --> FSH[fact_shipments]
+  DC --> FSH
+  DS --> FSH
+  DDATE --> FW[fact_web_sessions]
+  DC --> FW
+  DCA[dim_campaign] --> FW
+  DCH --> FW
+  DDATE --> FM[fact_marketing_spend]
+  DCA --> FM
+  DCH --> FM
+  DSP[dim_supplier] -. documented snowflake .-> DP
